@@ -1,0 +1,10 @@
+D:\2016\NicePakGitHub2\CompaniesInfo\Data\CompaniesInfo.Data.Common\bin\Debug\CompaniesInfo.Data.Common.dll.config
+D:\2016\NicePakGitHub2\CompaniesInfo\Data\CompaniesInfo.Data.Common\bin\Debug\CompaniesInfo.Data.Common.dll
+D:\2016\NicePakGitHub2\CompaniesInfo\Data\CompaniesInfo.Data.Common\bin\Debug\CompaniesInfo.Data.Common.pdb
+D:\2016\NicePakGitHub2\CompaniesInfo\Data\CompaniesInfo.Data.Common\bin\Debug\EntityFramework.dll
+D:\2016\NicePakGitHub2\CompaniesInfo\Data\CompaniesInfo.Data.Common\bin\Debug\EntityFramework.SqlServer.dll
+D:\2016\NicePakGitHub2\CompaniesInfo\Data\CompaniesInfo.Data.Common\bin\Debug\EntityFramework.xml
+D:\2016\NicePakGitHub2\CompaniesInfo\Data\CompaniesInfo.Data.Common\bin\Debug\EntityFramework.SqlServer.xml
+D:\2016\NicePakGitHub2\CompaniesInfo\Data\CompaniesInfo.Data.Common\obj\Debug\CompaniesInfo.Data.Common.csprojResolveAssemblyReference.cache
+D:\2016\NicePakGitHub2\CompaniesInfo\Data\CompaniesInfo.Data.Common\obj\Debug\CompaniesInfo.Data.Common.dll
+D:\2016\NicePakGitHub2\CompaniesInfo\Data\CompaniesInfo.Data.Common\obj\Debug\CompaniesInfo.Data.Common.pdb

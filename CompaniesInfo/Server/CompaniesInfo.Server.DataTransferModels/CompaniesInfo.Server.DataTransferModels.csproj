@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompanyEmployee\AddEmployeeToCompanyRequest.cs" />
+    <Compile Include="CompanyEmployee\AddEmployeeToCompanyResponse.cs" />
     <Compile Include="Company\CreateCompanyRequest.cs" />
     <Compile Include="Company\CompanyResponse.cs" />
     <Compile Include="Employee\CreateEmployeeRequest.cs" />

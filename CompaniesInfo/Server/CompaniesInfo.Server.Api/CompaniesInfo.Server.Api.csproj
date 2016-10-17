@@ -73,8 +73,16 @@
       <HintPath>..\..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject.Web.Common.OwinHost, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Ninject.Web.Common.OwinHost.3.2.3.0\lib\net45-full\Ninject.Web.Common.OwinHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject.Web.WebApi, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Ninject.Web.WebApi.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.WebApi.OwinHost, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Ninject.Web.WebApi.OwinHost.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.OwinHost.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -199,9 +207,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\NinjectConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -236,6 +246,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\EmployeeToCompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -314,6 +325,28 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\CompaniesInfo.Data.Common\CompaniesInfo.Data.Common.csproj">
+      <Project>{75DF5820-B1C8-4D65-9B39-F02AB3D59494}</Project>
+      <Name>CompaniesInfo.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\CompaniesInfo.Data\CompaniesInfo.Data.csproj">
+      <Project>{F23A1E5D-BABF-450B-B633-2F058E680021}</Project>
+      <Name>CompaniesInfo.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\CompaniesInfo.Services.Data\CompaniesInfo.Services.Data.csproj">
+      <Project>{FE2F5EE0-14AF-47EB-A43D-01444EA041E2}</Project>
+      <Name>CompaniesInfo.Services.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CompaniesInfo.Server.Common\CompaniesInfo.Server.Common.csproj">
+      <Project>{252af7da-fb6a-4c0f-b53b-27ccfac8569f}</Project>
+      <Name>CompaniesInfo.Server.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CompaniesInfo.Server.DataTransferModels\CompaniesInfo.Server.DataTransferModels.csproj">
+      <Project>{DD6F9CC7-E768-4E7C-ACAA-9BDB7829732B}</Project>
+      <Name>CompaniesInfo.Server.DataTransferModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
