@@ -42,6 +42,10 @@
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -53,8 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Company\ComapnyService.cs" />
+    <Compile Include="CompanyEmployee\CompanyEmployeeService.cs" />
+    <Compile Include="CompanyEmployee\ICompanyEmployeeService.cs" />
+    <Compile Include="Company\CompanyService.cs" />
     <Compile Include="Company\ICompanyService.cs" />
+    <Compile Include="Employee\EmployeeService.cs" />
+    <Compile Include="Employee\IEmployeeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

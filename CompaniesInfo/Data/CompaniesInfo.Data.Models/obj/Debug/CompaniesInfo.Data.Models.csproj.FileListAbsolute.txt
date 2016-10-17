@@ -1,0 +1,5 @@
+D:\2016\NicePakGitHub2\CompaniesInfo\Data\CompaniesInfo.Data.Models\bin\Debug\CompaniesInfo.Data.Models.dll
+D:\2016\NicePakGitHub2\CompaniesInfo\Data\CompaniesInfo.Data.Models\bin\Debug\CompaniesInfo.Data.Models.pdb
+D:\2016\NicePakGitHub2\CompaniesInfo\Data\CompaniesInfo.Data.Models\obj\Debug\CompaniesInfo.Data.Models.csprojResolveAssemblyReference.cache
+D:\2016\NicePakGitHub2\CompaniesInfo\Data\CompaniesInfo.Data.Models\obj\Debug\CompaniesInfo.Data.Models.dll
+D:\2016\NicePakGitHub2\CompaniesInfo\Data\CompaniesInfo.Data.Models\obj\Debug\CompaniesInfo.Data.Models.pdb

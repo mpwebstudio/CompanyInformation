@@ -8,16 +8,16 @@
     using System.Threading.Tasks;
     using AutoMapper.QueryableExtensions;
 
-    public class ComapnyService : ICompanyService
+    public class CompanyService : ICompanyService
     {
         private readonly IRepository<Company> company;
 
-        public ComapnyService(IRepository<Company> company)
+        public CompanyService(IRepository<Company> company)
         {
             this.company = company;
         }
 
-        public async Task<CompanyResponse> CreateCompanye(CreateCompanyRequest request)
+        public async Task<CompanyResponse> CreateCompany(CreateCompanyRequest request)
         {
             var companyNameCheck = await company.All().FirstOrDefaultAsync(x => x.CompanyName == request.CompanyName);
             if (companyNameCheck != null)
@@ -35,7 +35,7 @@
 
             company.SaveChanges();
 
-            return await company.All().Where(x => x.ID == companyToAdd.ID).ProjectTo<CompanyResponse>().FirstOrDefaultAsync();
+            return await company.All().Where(x => x.ID == companyToAdd.ID).ProjectTo<CompanyResponse>().SingleAsync();
         }
     }
 }
