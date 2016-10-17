@@ -17,7 +17,7 @@
             this.company = company;
         }
 
-        public async Task<CompanyResponse> CreateCompanye(CreateCompanyRequest request)
+        public async Task<CompanyResponse> CreateCompany(CreateCompanyRequest request)
         {
             var companyNameCheck = await company.All().FirstOrDefaultAsync(x => x.CompanyName == request.CompanyName);
             if (companyNameCheck != null)

@@ -5,6 +5,6 @@
 
     public interface ICompanyService
     {
-        Task<CompanyResponse> CreateCompanye(CreateCompanyRequest request);
+        Task<CompanyResponse> CreateCompany(CreateCompanyRequest request);
     }
 }
