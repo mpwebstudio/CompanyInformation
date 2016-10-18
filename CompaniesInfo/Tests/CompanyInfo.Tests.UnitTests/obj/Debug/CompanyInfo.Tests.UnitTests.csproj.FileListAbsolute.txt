@@ -19,3 +19,5 @@ D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\EntityFramework.xml
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\obj\Debug\CompanyInfo.Tests.UnitTests.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\obj\Debug\CompanyInfo.Tests.UnitTests.pdb
+D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\Ninject.dll
+D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\Ninject.xml

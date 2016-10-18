@@ -1,5 +1,6 @@
 ﻿namespace CompaniesInfo.Services.Data.Employee
 {
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
     using System.Threading.Tasks;
@@ -25,6 +26,39 @@
             employee.SaveChanges();
 
             return await employee.All().Where(x => x.ID == emp.ID).ProjectTo<EmployeeResponse>().SingleAsync();
+        }
+
+        public async Task<IEnumerable<GetEmployeesReponse>> GetEmployees(GetEmployeesRequest request)
+        {
+            return employee.All()
+                    .Where(x => x.CompanyEmployees.Any(z => z.CompanyID == request.CompanyID) && x.IsLive)
+                    .ProjectTo<GetEmployeesReponse>();
+        }
+
+        public async Task<EmployeeResponse> UpdateEmployee(EmployeeResponse request)
+        {
+            var oldData = employee.GetById(request);
+
+            AutoMapper.Mapper.Map(request, oldData);
+
+            employee.SaveChanges();
+
+            return employee.All().Where(x => x.ID == oldData.ID).ProjectTo<EmployeeResponse>().Single();
+        }
+
+        public async Task<DeleteEmployeeResponse> DeleteEmployee(DeleteEmployeeRequest request)
+        {
+            var oldData = employee.All().SingleOrDefaultAsync(x => x.ID == request.EmployeeID);
+
+            if (oldData == null)
+            {
+                return new DeleteEmployeeResponse {Message = "No employee found", Success = false};
+            }
+
+            oldData.Result.IsLive = false;
+            employee.SaveChanges();
+
+            return new DeleteEmployeeResponse {Success = true};
         }
     }
 }

@@ -22,5 +22,32 @@
         {
             return new CompaniesInfoEntities();
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Company>()
+                .HasMany(e => e.CompanyEmployees)
+                .WithRequired(e => e.Company) 
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CompanyEmployee>()
+                .HasMany(e => e.DelegateAuthorities)
+                .WithRequired(e => e.CompanyEmployee)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Employee>()
+                .HasMany(e => e.CompanyEmployees)
+                .WithRequired(e => e.Employee)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Employee>()
+                .HasMany(e => e.CompanyEmployees)
+                .WithRequired(e => e.Employee)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Employee>()
+                .HasOptional(e => e.DelegateAuthority)
+                .WithRequired(e => e.Employee);
+        }
     }
 }

@@ -6,6 +6,7 @@ namespace CompaniesInfo.Server.Api
 {
     using System.Reflection;
     using System.Web.Http;
+    using Newtonsoft.Json.Serialization;
     using Owin;
     using Ninject.Web.Common.OwinHost;
     using Ninject.Web.WebApi.OwinHost;
@@ -16,8 +17,9 @@ namespace CompaniesInfo.Server.Api
         {
             ConfigureAuth(app);
 
-
             var httpConfig = new HttpConfiguration();
+            httpConfig.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            httpConfig.Formatters.JsonFormatter.UseDataContractJsonSerializer = false;
             WebApiConfig.Register(httpConfig);
 
             httpConfig.EnsureInitialized();

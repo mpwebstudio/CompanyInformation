@@ -1,5 +1,6 @@
 ﻿namespace CompaniesInfo.Services.Data.Company
 {
+    using System.Collections.Generic;
     using System.Data.Entity;
     using CompaniesInfo.Data.Common.Repositories;
     using CompaniesInfo.Data.Models;
@@ -28,7 +29,7 @@
             var companyToAdd = new Company
             {
                 CompanyName = request.CompanyName,
-                PrimeContactID = request.PrimeContactID,
+                EmployeeID = request.PrimeContactID,
             };
 
             company.Add(companyToAdd);
@@ -36,6 +37,41 @@
             company.SaveChanges();
 
             return await company.All().Where(x => x.ID == companyToAdd.ID).ProjectTo<CompanyResponse>().SingleAsync();
+        }
+
+        public async Task<CompanyResponse> GetCompany(GetCompanyRequest request)
+        {
+            return await company.All().Where(x => x.ID == request.CompanyID && x.IsLive).ProjectTo<CompanyResponse>().FirstOrDefaultAsync();
+        }
+
+        public async Task<IEnumerable<CompanyResponse>> GetAllCompany()
+        {
+            return company.All().Where(x => x.IsLive).ProjectTo<CompanyResponse>();
+        }
+
+        public async Task<CompanyResponse> UpdateCompany(CompanyResponse request)
+        {
+            var oldData = company.GetById(request);
+
+            AutoMapper.Mapper.Map(request, oldData);
+            company.SaveChanges();
+
+            return await company.All().Where(x => x.ID == oldData.ID).ProjectTo<CompanyResponse>().SingleAsync();
+        }
+
+        public async Task<DeleteCompanyResponse> DeleteCompany(GetCompanyRequest request)
+        {
+            var oldData = company.All().SingleOrDefault(x => x.ID == request.CompanyID);
+
+            if (oldData == null)
+            {
+                return new DeleteCompanyResponse {Message = "Company not found", Success = false};
+            }
+
+            oldData.IsLive = false;
+            company.SaveChanges();
+
+            return new DeleteCompanyResponse {Success = true};
         }
     }
 }

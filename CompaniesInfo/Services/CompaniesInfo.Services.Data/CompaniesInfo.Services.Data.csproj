@@ -61,6 +61,8 @@
     <Compile Include="CompanyEmployee\ICompanyEmployeeService.cs" />
     <Compile Include="Company\CompanyService.cs" />
     <Compile Include="Company\ICompanyService.cs" />
+    <Compile Include="DelegateAuthority\DelegateAuthorityService.cs" />
+    <Compile Include="DelegateAuthority\IDelegateAuthorityService.cs" />
     <Compile Include="Employee\EmployeeService.cs" />
     <Compile Include="Employee\IEmployeeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
