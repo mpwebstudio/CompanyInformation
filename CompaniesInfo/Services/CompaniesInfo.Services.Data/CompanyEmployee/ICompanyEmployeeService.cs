@@ -9,10 +9,6 @@
     {
         Task<AddEmployeeToCompanyResponse> AddEmployeeToCompany(AddEmployeeToCompanyRequest request);
 
-        Task<CompanyResponse> GetCompany(GetCompanyRequest request);
-
-        Task<CompanyResponse> UpdateCompany(CompanyResponse request);
-
-        Task<DeleteCompanyResponse> DeleteCompany(GetCompanyRequest request);
+        
     }
 }

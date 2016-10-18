@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -45,6 +49,10 @@
     <Compile Include="CompanyEmployee\AddEmployeeToCompanyResponse.cs" />
     <Compile Include="Company\CreateCompanyRequest.cs" />
     <Compile Include="Company\CompanyResponse.cs" />
+    <Compile Include="Company\DeleteCompanyResponse.cs" />
+    <Compile Include="Company\GetCompanyRequest.cs" />
+    <Compile Include="DelegateAuthority\AddDelegateAuthorityRequest.cs" />
+    <Compile Include="DelegateAuthority\AddDelegatedAuthorityResponse.cs" />
     <Compile Include="Employee\CreateEmployeeRequest.cs" />
     <Compile Include="Employee\DeleteEmployeeRequest.cs" />
     <Compile Include="Employee\DeleteEmployeeResponse.cs" />
@@ -62,6 +70,9 @@
       <Project>{252AF7DA-FB6A-4C0F-B53B-27CCFAC8569F}</Project>
       <Name>CompaniesInfo.Server.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

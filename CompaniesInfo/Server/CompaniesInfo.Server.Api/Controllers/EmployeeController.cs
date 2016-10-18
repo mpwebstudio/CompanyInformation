@@ -28,5 +28,19 @@
         {
             return await employeeService.GetEmployees(new GetEmployeesRequest {CompanyID = companyId});
         }
+
+        [HttpPost]
+        [Route("api/employee/updateEmployeeDetails")]
+        public async Task<EmployeeResponse> UpdateEmployeedetails([FromBody]EmployeeResponse request)
+        {
+            return await employeeService.UpdateEmployee(request);
+        }
+
+        [HttpDelete]
+        [Route("api/employee/deleteEmployee")]
+        public async Task<DeleteEmployeeResponse> DeleteEmployee([FromBody] DeleteEmployeeRequest request)
+        {
+            return await employeeService.DeleteEmployee(request);
+        }
     }
 }

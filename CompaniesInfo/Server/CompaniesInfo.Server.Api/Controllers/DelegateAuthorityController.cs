@@ -16,7 +16,7 @@
 
         [HttpPost]
         [Route("api/delegatedAuthority/addAuthority")]
-        public async Task<AddDelegatedAuthorityResponse> AddAuthority(AddDelegateAuthorityRequest request)
+        public async Task<AddDelegatedAuthorityResponse> AddAuthority([FromBody]AddDelegateAuthorityRequest request)
         {
             return await delegateAuthirityService.AddDelegatedAuthority(request);
         }

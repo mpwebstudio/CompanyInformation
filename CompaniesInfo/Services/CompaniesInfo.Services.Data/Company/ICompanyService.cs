@@ -1,5 +1,6 @@
 ﻿namespace CompaniesInfo.Services.Data.Company
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using Server.Common;
     using Server.DataTransferModels.Company;
@@ -13,5 +14,7 @@
         Task<CompanyResponse> UpdateCompany(CompanyResponse request);
 
         Task<DeleteCompanyResponse> DeleteCompany(GetCompanyRequest request);
+
+        Task<IEnumerable<CompanyResponse>> GetAllCompany();
     }
 }

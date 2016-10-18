@@ -1,5 +1,6 @@
 ﻿namespace CompaniesInfo.Services.Data.Company
 {
+    using System.Collections.Generic;
     using System.Data.Entity;
     using CompaniesInfo.Data.Common.Repositories;
     using CompaniesInfo.Data.Models;
@@ -41,6 +42,11 @@
         public async Task<CompanyResponse> GetCompany(GetCompanyRequest request)
         {
             return await company.All().Where(x => x.ID == request.CompanyID && x.IsLive).ProjectTo<CompanyResponse>().FirstOrDefaultAsync();
+        }
+
+        public async Task<IEnumerable<CompanyResponse>> GetAllCompany()
+        {
+            return company.All().Where(x => x.IsLive).ProjectTo<CompanyResponse>();
         }
 
         public async Task<CompanyResponse> UpdateCompany(CompanyResponse request)
