@@ -1,0 +1,50 @@
+﻿<div class="row">
+    <div class="" ng-controller="CompanyController">
+        <div class="row">
+            <div class="col-sm-12 text-center">Add Company</div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <div>
+                            <input type="text" class="form-control" placeholder="Company name" required ng-model="add.companyName" />
+                        </div>
+                        <div class="">
+                            <input type="text" class="form-control" placeholder="Contact name" required ng-model="add.contactName" /> <button ng-click="open()" class="btn btn-default">Success</button>
+                        </div>
+                        <div class="hidden">
+                            <input type="text" class="form-control" placeholder="id" id="emplId" ng-model="add.emplId" />
+                        </div>
+                        <div class="">
+                            <input type="tel" class="form-control" placeholder="Telephone" required ng-model="add.telephone" />
+                        </div>
+                        <div class="">
+                            <input type="email" class="form-control" placeholder="Email address" ng-model="add.email" />
+                        </div>
+                        <div class="">
+                            <button class="btn btn-success" ng-disabled="newCompany.$invalid" ng-click="addComapny(add)">Add</button>
+                            <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
+                        </div>
+                        <script type="text/ng-template" id="myModalContent.html">
+                            <div class="modal-header">
+                                <h3 class="modal-title">I'm a modal!</h3>
+                            </div>
+                            <div class="modal-body">
+                                <ul>
+                                    <li ng-repeat="item in items">
+                                        <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item.fullname }}</a>
+                                    </li>
+                                </ul>
+                                Selected: <b>{{ selected.item.fullname }}</b>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+                            </div>
+                        </script>
+                        {{selected}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

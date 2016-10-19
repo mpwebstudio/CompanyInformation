@@ -1,9 +1,9 @@
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Common\bin\Debug\CompaniesInfo.Server.Common.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Common\bin\Debug\CompaniesInfo.Server.Common.pdb
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Common\bin\Debug\AutoMapper.dll
+D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Common\bin\Debug\Ninject.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Common\bin\Debug\AutoMapper.xml
+D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Common\bin\Debug\Ninject.xml
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Common\obj\Debug\CompaniesInfo.Server.Common.csprojResolveAssemblyReference.cache
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Common\obj\Debug\CompaniesInfo.Server.Common.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Common\obj\Debug\CompaniesInfo.Server.Common.pdb
-D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Common\bin\Debug\Ninject.dll
-D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Common\bin\Debug\Ninject.xml

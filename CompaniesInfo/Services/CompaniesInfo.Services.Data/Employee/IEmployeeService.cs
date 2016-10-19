@@ -9,7 +9,9 @@
     {
         Task<EmployeeResponse> CreateEmployee(CreateEmployeeRequest request);
 
-        Task<IEnumerable<GetEmployeesReponse>> GetEmployees(GetEmployeesRequest request);
+        Task<IList<GetEmployeesReponse>> GetEmployees(GetEmployeesRequest request);
+
+        Task<IList<GetEmployeesReponse>> GetAllEmployees();
 
         Task<EmployeeResponse> UpdateEmployee(EmployeeResponse request);
 

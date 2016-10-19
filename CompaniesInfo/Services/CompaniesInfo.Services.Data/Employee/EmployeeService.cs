@@ -28,11 +28,17 @@
             return await employee.All().Where(x => x.ID == emp.ID).ProjectTo<EmployeeResponse>().SingleAsync();
         }
 
-        public async Task<IEnumerable<GetEmployeesReponse>> GetEmployees(GetEmployeesRequest request)
+        public async Task<IList<GetEmployeesReponse>> GetEmployees(GetEmployeesRequest request)
         {
-            return employee.All()
+            return await employee.All()
                     .Where(x => x.CompanyEmployees.Any(z => z.CompanyID == request.CompanyID) && x.IsLive)
-                    .ProjectTo<GetEmployeesReponse>();
+                    .ProjectTo<GetEmployeesReponse>().ToListAsync();
+        }
+
+        public async Task<IList<GetEmployeesReponse>> GetAllEmployees()
+        {
+            return await employee.All()
+                .Where(x => x.IsLive).ProjectTo<GetEmployeesReponse>().ToListAsync();
         }
 
         public async Task<EmployeeResponse> UpdateEmployee(EmployeeResponse request)
@@ -52,13 +58,13 @@
 
             if (oldData == null)
             {
-                return new DeleteEmployeeResponse {Message = "No employee found", Success = false};
+                return new DeleteEmployeeResponse { Message = "No employee found", Success = false };
             }
 
             oldData.Result.IsLive = false;
             employee.SaveChanges();
 
-            return new DeleteEmployeeResponse {Success = true};
+            return new DeleteEmployeeResponse { Success = true };
         }
     }
 }

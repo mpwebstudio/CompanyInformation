@@ -23,7 +23,7 @@
         }
 
         [HttpGet]
-        [Route("api/company/getCompany/{companyId : int}")]
+        [Route("api/company/getCompany/{companyId}")]
         public async Task<CompanyResponse> GetCompany(int companyId)
         {
             return await companyService.GetCompany(new GetCompanyRequest {CompanyID = companyId});

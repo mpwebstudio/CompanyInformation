@@ -23,6 +23,11 @@ namespace CompaniesInfo.Server.Api
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundle/angular").Include(
+               "~/Scripts/angular-route.min.js",
+               "~/Scripts/angular-resource.min.js"
+           ));
         }
     }
 }

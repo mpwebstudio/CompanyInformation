@@ -1,4 +1,3 @@
-D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\obj\Debug\CompanyInfo.Tests.UnitTests.csprojResolveAssemblyReference.cache
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\CompanyInfo.Tests.UnitTests.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\CompanyInfo.Tests.UnitTests.pdb
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\CompaniesInfo.Data.Models.dll
@@ -6,6 +5,7 @@ D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\CompaniesInfo.Server.DataTransferModels.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\CompaniesInfo.Services.Data.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\nunit.framework.dll
+D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\Ninject.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\AutoMapper.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\CompaniesInfo.Data.Common.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\EntityFramework.dll
@@ -14,10 +14,10 @@ D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\CompaniesInfo.Server.DataTransferModels.pdb
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\CompaniesInfo.Services.Data.pdb
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\nunit.framework.xml
+D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\Ninject.xml
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\AutoMapper.xml
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\CompaniesInfo.Data.Common.pdb
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\EntityFramework.xml
+D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\obj\Debug\CompanyInfo.Tests.UnitTests.csprojResolveAssemblyReference.cache
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\obj\Debug\CompanyInfo.Tests.UnitTests.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\obj\Debug\CompanyInfo.Tests.UnitTests.pdb
-D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\Ninject.dll
-D:\2016\NicePakGitHub2\CompaniesInfo\Tests\CompanyInfo.Tests.UnitTests\bin\Debug\Ninject.xml

@@ -15,6 +15,8 @@ D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Compani
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\CompaniesInfo.Server.Api.pdb
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Antlr3.Runtime.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\AutoMapper.dll
+D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\CompaniesInfo.Data.Common.dll
+D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\CompaniesInfo.Data.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\CompaniesInfo.Server.Common.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\CompaniesInfo.Server.DataTransferModels.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\CompaniesInfo.Services.Data.dll
@@ -40,7 +42,9 @@ D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Ninject
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Ninject.Extensions.Conventions.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Ninject.Extensions.NamedScope.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Ninject.Web.Common.dll
+D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Ninject.Web.Common.OwinHost.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Ninject.Web.WebApi.dll
+D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Ninject.Web.WebApi.OwinHost.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Owin.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\System.Net.Http.Formatting.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\System.Web.Helpers.dll
@@ -54,8 +58,9 @@ D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\System.
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\System.Web.WebPages.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\System.Web.WebPages.Razor.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\WebGrease.dll
-D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\CompaniesInfo.Data.Common.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\CompaniesInfo.Data.Models.dll
+D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\CompaniesInfo.Data.Common.pdb
+D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\CompaniesInfo.Data.pdb
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\CompaniesInfo.Services.Data.pdb
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\CompaniesInfo.Server.Common.pdb
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\CompaniesInfo.Server.DataTransferModels.pdb
@@ -66,7 +71,9 @@ D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Ninject
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Ninject.Extensions.Conventions.xml
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Ninject.Extensions.NamedScope.xml
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Ninject.Web.Common.xml
+D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Ninject.Web.Common.OwinHost.xml
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Ninject.Web.WebApi.xml
+D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Ninject.Web.WebApi.OwinHost.xml
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Newtonsoft.Json.xml
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\System.Net.Http.Formatting.xml
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\System.Web.Helpers.xml
@@ -94,14 +101,7 @@ D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Microso
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Microsoft.Owin.Security.Twitter.xml
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\System.Web.Http.Owin.xml
-D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\CompaniesInfo.Data.Common.pdb
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\CompaniesInfo.Data.Models.pdb
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\obj\Debug\CompaniesInfo.Server.Api.csprojResolveAssemblyReference.cache
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\obj\Debug\CompaniesInfo.Server.Api.dll
 D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\obj\Debug\CompaniesInfo.Server.Api.pdb
-D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\CompaniesInfo.Data.dll
-D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Ninject.Web.Common.OwinHost.dll
-D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Ninject.Web.WebApi.OwinHost.dll
-D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\CompaniesInfo.Data.pdb
-D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Ninject.Web.Common.OwinHost.xml
-D:\2016\NicePakGitHub2\CompaniesInfo\Server\CompaniesInfo.Server.Api\bin\Ninject.Web.WebApi.OwinHost.xml

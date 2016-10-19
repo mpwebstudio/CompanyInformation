@@ -4,38 +4,57 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<body ng-app="dataApp" ng-cloak>
+    <div class="navbar navbar-inverse navbar-fixed-top navbarcolor">
         <div class="container">
-            <div class="navbar-header">
+            <div class="navbar-header padding15">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @*<img src="/Content/img/logo.png" class="logo" />*@
+                <a href="/" class="navline">Road Tax Check </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+                    <li><a href="/">Car check</a></li>
+                    <li><a href="/">MOT History</a></li>
+                    <li><a href="/">Car Finance</a></li>
+                    <li><a href="/">API</a></li>
+                    <li><a href="/">Contact Us</a></li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
+        <div ng-view>
+        </div>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            @RenderBody()
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.4.js"></script>
+
+    @Scripts.Render("~/bundle/angular")
+    <script src="~/app/app.js"></script>
+    <script src="~/app/controller/HomeController.js"></script>
+    <script src="~/app/controller/CompanyController.js"></script>
+    <script src="~/app/controller/ModalController.js"></script>
+    <script src="~/app/factory/companyService.js"></script>
+    <script src="~/app/factory/employeeService.js"></script>
+    <script src="~/app/directives/modal.js"></script>
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

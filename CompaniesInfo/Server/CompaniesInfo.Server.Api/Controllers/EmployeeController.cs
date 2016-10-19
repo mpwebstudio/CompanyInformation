@@ -23,10 +23,17 @@
         }
 
         [HttpGet]
-        [Route("api/employee/getemployees/{companyId:int}")]
-        public async Task<IEnumerable<GetEmployeesReponse>> GetEmployees(int companyId)
+        [Route("api/employee/getemployees/{companyId}")]
+        public async Task<IList<GetEmployeesReponse>> GetEmployees(int companyId)
         {
             return await employeeService.GetEmployees(new GetEmployeesRequest {CompanyID = companyId});
+        }
+
+        [HttpGet]
+        [Route("api/employee/getAllEmployees/")]
+        public async Task<IList<GetEmployeesReponse>> GetAllEmployees()
+        {
+            return await employeeService.GetAllEmployees();
         }
 
         [HttpPost]
