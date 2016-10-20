@@ -6,22 +6,22 @@
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-6">
                         <div>
-                            <input type="text" class="form-control" placeholder="Company name" required ng-model="add.companyName" />
+                            <input type="text" class="form-control" placeholder="Company name" required ng-model="companyName" />
                         </div>
                         <div class="">
-                            <input type="text" class="form-control" placeholder="Contact name" required ng-model="add.contactName" /> <button ng-click="open()" class="btn btn-default">Success</button>
+                            <input type="text" class="form-control" placeholder="Contact name" required ng-model="selected.fullname" /> <button ng-click="open()" class="btn btn-default">Look</button>
                         </div>
                         <div class="hidden">
-                            <input type="text" class="form-control" placeholder="id" id="emplId" ng-model="add.emplId" />
+                            <input type="text" class="form-control" placeholder="id" id="emplId" ng-model="selected.id" />
                         </div>
                         <div class="">
-                            <input type="tel" class="form-control" placeholder="Telephone" required ng-model="add.telephone" />
+                            <input type="tel" class="form-control" placeholder="Telephone" required ng-model="selected.telephone" />
                         </div>
                         <div class="">
-                            <input type="email" class="form-control" placeholder="Email address" ng-model="add.email" />
+                            <input type="email" class="form-control" placeholder="Email address" ng-model="selected.email" />
                         </div>
                         <div class="">
-                            <button class="btn btn-success" ng-disabled="newCompany.$invalid" ng-click="addComapny(add)">Add</button>
+                            <button class="btn btn-success" ng-disabled="newCompany.$invalid" ng-click="addCompany(selected, companyName)">Add</button>
                             <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
                         </div>
                         <script type="text/ng-template" id="myModalContent.html">
@@ -41,7 +41,6 @@
                                 <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
                             </div>
                         </script>
-                        {{selected}}
                     </div>
                 </div>
             </div>

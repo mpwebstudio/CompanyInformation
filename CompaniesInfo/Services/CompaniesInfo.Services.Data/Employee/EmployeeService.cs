@@ -1,6 +1,5 @@
 ﻿namespace CompaniesInfo.Services.Data.Employee
 {
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
     using System.Threading.Tasks;
@@ -8,6 +7,7 @@
     using CompaniesInfo.Data.Models;
     using Server.DataTransferModels.Employee;
     using AutoMapper.QueryableExtensions;
+    using Server.DataTransferModels;
 
     public class EmployeeService : IEmployeeService
     {
@@ -18,30 +18,40 @@
             this.employee = employee;
         }
 
-        public async Task<EmployeeResponse> CreateEmployee(CreateEmployeeRequest request)
+        public async Task<GenericResponse> CreateEmployee(CreateEmployeeRequest request)
         {
             var emp = AutoMapper.Mapper.Map<Employee>(request);
 
             employee.Add(emp);
             employee.SaveChanges();
 
-            return await employee.All().Where(x => x.ID == emp.ID).ProjectTo<EmployeeResponse>().SingleAsync();
+            return new GenericResponse
+            {
+                Data = await employee.All().Where(x => x.ID == emp.ID).ProjectTo<EmployeeResponse>().SingleAsync(),
+                Status = true
+            };
         }
 
-        public async Task<IList<GetEmployeesReponse>> GetEmployees(GetEmployeesRequest request)
+        public async Task<GenericResponse> GetEmployees(GetEmployeesRequest request)
         {
-            return await employee.All()
+            return new GenericResponse
+            {
+                Data = await employee.All()
                     .Where(x => x.CompanyEmployees.Any(z => z.CompanyID == request.CompanyID) && x.IsLive)
-                    .ProjectTo<GetEmployeesReponse>().ToListAsync();
+                    .ProjectTo<GetEmployeesReponse>().ToListAsync()
+            };
         }
 
-        public async Task<IList<GetEmployeesReponse>> GetAllEmployees()
+        public async Task<GenericResponse> GetAllEmployees()
         {
-            return await employee.All()
-                .Where(x => x.IsLive).ProjectTo<GetEmployeesReponse>().ToListAsync();
+            return new GenericResponse
+            {
+                Data = await employee.All()
+                    .Where(x => x.IsLive).ProjectTo<GetEmployeesReponse>().ToListAsync()
+            };
         }
 
-        public async Task<EmployeeResponse> UpdateEmployee(EmployeeResponse request)
+        public async Task<GenericResponse> UpdateEmployee(EmployeeResponse request)
         {
             var oldData = employee.GetById(request);
 
@@ -49,22 +59,29 @@
 
             employee.SaveChanges();
 
-            return employee.All().Where(x => x.ID == oldData.ID).ProjectTo<EmployeeResponse>().Single();
+            return new GenericResponse
+            {
+                Data = await employee.All().Where(x => x.ID == oldData.ID).ProjectTo<EmployeeResponse>().SingleAsync()
+            };
         }
 
-        public async Task<DeleteEmployeeResponse> DeleteEmployee(DeleteEmployeeRequest request)
+        public async Task<GenericResponse> DeleteEmployee(DeleteEmployeeRequest request)
         {
-            var oldData = employee.All().SingleOrDefaultAsync(x => x.ID == request.EmployeeID);
+            var oldData = await employee.All().SingleOrDefaultAsync(x => x.ID == request.EmployeeID);
 
             if (oldData == null)
             {
-                return new DeleteEmployeeResponse { Message = "No employee found", Success = false };
+                return new GenericResponse
+                {
+                    Message = "No employee found",
+                    Status = false
+                };
             }
 
-            oldData.Result.IsLive = false;
+            oldData.IsLive = false;
             employee.SaveChanges();
 
-            return new DeleteEmployeeResponse { Success = true };
+            return new GenericResponse { Status = true };
         }
     }
 }

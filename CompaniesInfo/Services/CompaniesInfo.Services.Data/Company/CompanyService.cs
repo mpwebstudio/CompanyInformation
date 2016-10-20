@@ -30,6 +30,7 @@
             {
                 CompanyName = request.CompanyName,
                 EmployeeID = request.PrimeContactID,
+                IsLive = true
             };
 
             company.Add(companyToAdd);

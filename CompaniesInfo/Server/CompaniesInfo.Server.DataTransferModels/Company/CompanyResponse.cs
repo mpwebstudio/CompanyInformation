@@ -23,7 +23,8 @@
         {
             Mapper.CreateMap<Company, CompanyResponse>()
                 .ForMember(t => t.ContactNumber, a => a.MapFrom(f => f.Employee.Telephone))
-                .ForMember(t => t.ContactName, a => a.MapFrom(f => f.Employee.Fullname));
+                .ForMember(t => t.ContactName, a => a.MapFrom(f => f.Employee.Fullname))
+                .ForMember(t => t.PrimeContactID, a => a.MapFrom(f => f.EmployeeID));
         }
     }
 }

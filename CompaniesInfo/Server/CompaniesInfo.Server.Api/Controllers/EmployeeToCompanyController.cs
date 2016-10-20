@@ -16,7 +16,7 @@
 
         [HttpPost]
         [Route("api/employeeToCompany/addEmployeeToCompany")]
-        public async Task<AddEmployeeToCompanyResponse> AddEmployeeToCompany([FromBody] AddEmployeeToCompanyRequest request)
+        public async Task<AddEmployeeToCompanyResponse> AddEmployeeToCompany([FromBody]AddEmployeeToCompanyRequest request)
         {
             return await companyEmployeeService.AddEmployeeToCompany(request);
         }

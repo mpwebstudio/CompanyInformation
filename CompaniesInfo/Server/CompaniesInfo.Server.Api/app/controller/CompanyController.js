@@ -1,9 +1,7 @@
 ﻿dataApp.controller('CompanyController',
-    function CompanyController($scope, employeeService, $log, companyService, $window, $uibModal) {
+    function CompanyController($scope, employeeService, $log, companyService, $window, $uibModal, $q) {
 
         $scope.animationsEnabled = true;
-
-        $scope.Items = ['item1', 'item2', 'item3'];
 
         $scope.open = function (size) {
 
@@ -14,7 +12,7 @@
                 size: size,
                 resolve: {
                     items: function () {
-                        return $scope.Items;
+                        return $scope.add;
                     }
                 }
             });
@@ -29,6 +27,24 @@
         $scope.toggleAnimation = function () {
             $scope.animationsEnabled = !$scope.animationsEnabled;
         };
+
+
+
+        $scope.addCompany = function(selected, company) {
+
+            var deffered = $q.defer();
+
+            if (selected.id != undefined) {
+                let mix = { company: company, primeContactId: selected.id };
+                companyService.createCompany(mix);
+
+            } else {
+                
+            }
+
+        };
+
+
 
     });
 

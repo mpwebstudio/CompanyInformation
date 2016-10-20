@@ -14,7 +14,7 @@
 
         public string CompanyName { get; set; }
 
-        public bool IsLive { get; set; }
+        public bool IsLive { get; set; } = true;
 
         public int EmployeeID { get; set; }
 

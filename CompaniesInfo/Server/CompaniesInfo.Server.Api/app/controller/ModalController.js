@@ -3,12 +3,10 @@
 
         employeeService.getAllEmployees(1,
                     function (data) {
-                        $scope.items = data;
+                        $scope.items = data.data;
                             
                         ;
                     });
-
-        //$scope.items = ['item1', 'item2', 'item3'];
 
         $scope.selected = {
             item: $scope.items

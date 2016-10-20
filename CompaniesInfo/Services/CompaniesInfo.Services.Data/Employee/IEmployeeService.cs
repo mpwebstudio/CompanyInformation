@@ -1,20 +1,20 @@
 ﻿namespace CompaniesInfo.Services.Data.Employee
 {
-    using System.Collections.Generic;
     using System.Threading.Tasks;
     using Server.Common;
+    using Server.DataTransferModels;
     using Server.DataTransferModels.Employee;
 
     public interface IEmployeeService : IService
     {
-        Task<EmployeeResponse> CreateEmployee(CreateEmployeeRequest request);
+        Task<GenericResponse> CreateEmployee(CreateEmployeeRequest request);
 
-        Task<IList<GetEmployeesReponse>> GetEmployees(GetEmployeesRequest request);
+        Task<GenericResponse> GetEmployees(GetEmployeesRequest request);
 
-        Task<IList<GetEmployeesReponse>> GetAllEmployees();
+        Task<GenericResponse> GetAllEmployees();
 
-        Task<EmployeeResponse> UpdateEmployee(EmployeeResponse request);
+        Task<GenericResponse> UpdateEmployee(EmployeeResponse request);
 
-        Task<DeleteEmployeeResponse> DeleteEmployee(DeleteEmployeeRequest request);
+        Task<GenericResponse> DeleteEmployee(DeleteEmployeeRequest request);
     }
 }

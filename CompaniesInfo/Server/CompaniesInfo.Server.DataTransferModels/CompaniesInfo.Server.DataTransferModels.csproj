@@ -59,6 +59,7 @@
     <Compile Include="Employee\EmployeeResponse.cs" />
     <Compile Include="Employee\GetEmployeesReponse.cs" />
     <Compile Include="Employee\GetEmployeesRequest.cs" />
+    <Compile Include="GenericResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
