@@ -272,6 +272,7 @@
     <Content Include="app\templates\addCompany.html" />
     <Content Include="app\templates\home.html" />
     <Content Include="app\templates\modal.html" />
+    <Content Include="app\templates\updateCompany.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

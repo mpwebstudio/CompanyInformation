@@ -53,7 +53,7 @@
 
         public async Task<GenericResponse> UpdateEmployee(EmployeeResponse request)
         {
-            var oldData = employee.GetById(request);
+            var oldData = employee.All().Single(x => x.ID == request.ID);
 
             AutoMapper.Mapper.Map(request, oldData);
 

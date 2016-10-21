@@ -8,5 +8,7 @@
         public int CompanyID { get; set; }
 
         public int EmployeeID { get; set; }
+
+        public int OldEmployeeID { get; set; }
     }
 }
