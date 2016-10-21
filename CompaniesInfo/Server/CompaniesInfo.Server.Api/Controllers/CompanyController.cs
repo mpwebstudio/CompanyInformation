@@ -37,8 +37,8 @@
         }
 
         [HttpPost]
-        [Route("api/company/updateCompanyDetails")]
-        public async Task<CompanyResponse> UpdateCompanyResponse([FromBody]CompanyResponse request)
+        [Route("api/company/updateCompany")]
+        public async Task<CompanyResponse> UpdateCompany([FromBody]CompanyResponse request)
         {
             return await companyService.UpdateCompany(request);
         }

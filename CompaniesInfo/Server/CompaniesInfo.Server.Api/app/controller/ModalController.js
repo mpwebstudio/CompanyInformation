@@ -4,8 +4,6 @@
         employeeService.getAllEmployees(1,
                     function (data) {
                         $scope.items = data.data;
-                            
-                        ;
                     });
 
         $scope.selected = {
@@ -19,4 +17,13 @@
         $scope.cancel = function () {
             $uibModalInstance.dismiss('cancel');
         };
+
+        //$scope.editCompany = function(company) {
+        //    $scope.editCompany = company;
+        //    $uibModalInstance.close($scope.edited);
+        //};
+
+        $scope.okCompany = function() {
+            $uibModalInstance.close($scope.updatedCompany);
+        }
     });

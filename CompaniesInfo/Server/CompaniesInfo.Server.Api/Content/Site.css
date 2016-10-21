@@ -15,3 +15,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.control .btnHide {
+    opacity: 0.5;
+}
+
+.control:hover .btnHide {
+    opacity: 1;
+}

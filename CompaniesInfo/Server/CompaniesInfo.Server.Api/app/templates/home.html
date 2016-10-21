@@ -13,9 +13,70 @@
                         <div class="">{{todo.companyName}}</div>
                         <div>Contact Name: {{todo.contactName}}</div>
                         <div>Telephone: {{todo.contactNumber}}</div>
+                        <div class="control">
+                            <div class="pull-right">
+                                <button class="btn btn-primary btnHide" type="button" ng-click="editCompany(todo)">Edit</button>
+                                <button class="btn btn-danger btnHide" type="button" ng-click="deleteCompany(todo)">Delete</button>
+                            </div>
+                        </div>
                     </div>
                 </li>
+
             </ul>
+            <script type="text/ng-template" id="editCompany.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">Edit company - {{company.companyName}}</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="">
+                            <input type="text" class="form-control" required ng-model="company.companyName" />
+                        </div>
+                        <div class="">
+                            <input type="text" class="form-control" required ng-model="company.contactName" /> <button class="btn btn-primary btnHide" type="button" ng-click="openEmployee()">Emp</button>
+                        </div>
+                        <div class="">
+                            <input type="text" class="form-control" ng-model="company.contactPreferName" />
+                        </div>
+                        <div class="">
+                            <input type="text" class="form-control" required ng-model="company.contactNumber" />
+                        </div>
+                        <div class="">
+                            <input type="text" class="form-control" required ng-model="company.contactEmail" />
+                        </div>
+                        <div class="">
+                            <input type="hidden" class="form-control" required ng-model="company.id" />
+                        </div>
+                        <div class="">
+                            <input type="hidden" class="form-control" required ng-model="company.primeContactID" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" ng-click="$event.preventDefault(); updatedCompanyData = company; okCompany()">OK</button>
+                    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+                </div>
+            </script>
+
+            <script type="text/ng-template" id="currentEmployees.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">I'm a modal!</h3>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li ng-repeat="item in items">
+                            <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item.fullname }}</a>
+                        </li>
+                    </ul>
+                    Selected: <b>{{ selected.item.fullname }}</b>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+                </div>
+            </script>
+
         </div>
     </div>
 </div>

@@ -6,7 +6,6 @@
     };
 
     return {
-      
 
         getAllCompany: function(id, successcb) {
             const url = 'api/company/getAllCompany';
@@ -15,8 +14,6 @@
                 .success(function(data) {
                     successcb(data);
                 });
-
-
         },
 
         createCompany: function(id, successcb) {
@@ -34,9 +31,25 @@
             //        successcb(data);
             //    }
             //});
+        },
+
+        editCompany: function(company, successcb) {
+            const url = 'api/company/updateCompany';
+            let request = {
+                id: company.id,
+                companyName: company.companyName,
+                primeContactID: company.primeContactID,
+                contactName: company.contactName,
+                contactNumber: company.contactNumber,
+                contactEmail: company.contactEmail,
+                contactPreferName: company.contactPreferName
+            };
+
+            $http.post(url, request, config);
+            //.success(function(data) {
+            //    successcb(data);
+            //});
         }
-
-
     }
 })
 
