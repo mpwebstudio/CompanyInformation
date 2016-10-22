@@ -1,4 +1,4 @@
-﻿dataApp.factory('employeeService', function($http, $window, $location) {
+﻿dataApp.factory('employeeService', function($http, $window, $location, $log) {
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -15,13 +15,14 @@
                 });
         },
 
-        addEmployee: function(id, successcb) {
+        addEmployee: function(employee, successcb) {
             const url = 'api/employee/createemployee';
 
-            $http.post(url, { request: id })
-                .success(function(data) {
-                   if (data.status === true) {
-                       successcb(data);
+            $http.post(url, employee, config)
+                .success(function (data) {
+                    if (data.status === true) {
+                        $log.error(data);
+                        successcb(data);
                    } 
                 });
         },
@@ -31,7 +32,7 @@
             
             $http.post(url, id, config)
                 .success(function(data) {
-                    if (data.status === true) {
+                    if (data.success === true) {
                         successcb(data);
                     }
                 });

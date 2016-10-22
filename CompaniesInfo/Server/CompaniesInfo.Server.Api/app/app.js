@@ -28,5 +28,9 @@ var dataApp = angular
             {
                 templateUrl: 'app/templates/allEmployee.html'
             })
+            .when('/companyInfo/:id',
+            {
+                templateUrl: 'app/templates/companyInfo.html'
+            })
             .otherwise({ redirectTo: '/' });
     });

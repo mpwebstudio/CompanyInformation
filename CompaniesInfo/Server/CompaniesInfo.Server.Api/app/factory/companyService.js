@@ -1,4 +1,4 @@
-﻿dataApp.factory('companyService', function ($http, $log, employeeService) {
+﻿dataApp.factory('companyService', function ($http, $log, employeeService, $q) {
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -7,33 +7,30 @@
 
     return {
 
-        getAllCompany: function(id, successcb) {
+        getAllCompany: function (id, successcb) {
             const url = 'api/company/getAllCompany';
 
             $http.get(url)
-                .success(function(data) {
+                .success(function (data) {
                     successcb(data);
                 });
         },
 
-        createCompany: function(id, successcb) {
+        createCompany: function (id, successcb) {
             const url = 'api/company/createCompany';
             let req = { companyName: id.company, primeContactId: id.primeContactId };
 
             $http.post(url, req, config)
                 .then(function (response) {
-                    $log.error(response);
                     let request = { companyId: response.data.id, employeeId: response.data.primeContactID };
-                    employeeService.addEmployeeToCompany(request);
+                    employeeService.addEmployeeToCompany(request,
+                        function(addEmplToCompResponse) {
+                            successcb(addEmplToCompResponse);
+                        });
                 });
-            //.success(function(data) {
-            //    if (data.status === true) {
-            //        successcb(data);
-            //    }
-            //});
         },
 
-        editCompany: function(company, successcb) {
+        editCompany: function (company, successcb) {
             const url = 'api/company/updateCompany';
             let request = {
                 id: company.id,
@@ -46,9 +43,27 @@
             };
 
             $http.post(url, request, config);
-            //.success(function(data) {
-            //    successcb(data);
-            //});
+        },
+
+        deleteCompany: function (company, successcb) {
+            const url = 'api/company/deleteCompany';
+            let request = { companyID: company.id };
+
+            $http.post(url, request, config)
+                .success(function (data) {
+                    if (data.success === true) {
+                        successcb(data);
+                    }
+                });
+        },
+
+        getCompanyById: function (companyId, successcb) {
+            const url = 'api/company/getCompany/';
+
+            $http.get(url + companyId)
+                .success(function (data) {
+                    successcb(data);
+                });
         }
     }
 })
