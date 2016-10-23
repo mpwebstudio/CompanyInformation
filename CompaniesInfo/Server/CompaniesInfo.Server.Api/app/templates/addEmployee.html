@@ -1,5 +1,5 @@
 ﻿<div class="row" ng-controller="EmployeeController">
-    <div class="col-sm-12 text-center">Add User</div>
+    <div class="col-sm-12 text-center">{{employee.id != null ? 'Update' : 'Add'}} User</div>
     <div class="row">
         <div class="form-horizontal">
             <div class="form-group">
@@ -28,27 +28,34 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label">Delegated Employee</label>
                 <div class="input-group col-sm-4">
-                    <input type="text" class="form-control" placeholder="Contact name" disabled ng-model="employee.delegatedEmployee" />
-                    <span class="input-group-btn">
-                        <button ng-click="openEmployee()" class="btn navbar-btn btn-link">Add User</button>
-                    </span>
+                    <input type="text" class="form-control" placeholder="Contact name" disabled ng-model="employee.delegatedAuthority" />
+                    <input type="text" class="hidden" ng-model="employee.delegatedAuthorityID" />
+                    <button ng-click="openDelegatedEmployee()" ng-class="employee.delegatedAuthority ? 'btn-success' : 'btn-primary'" class="btn">{{employee.delegatedAuthority == null? 'Add' : 'Update'}} User</button>
+                </div>
+            </div>
+            <div ng-repeat="compName in employee.company">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Company</label>
+                    <div class="input-group col-sm-4">
+                        <input type="text" class="form-control" placeholder="Company name" disabled ng-model="compName.companyName" />
+                        <input type="text" class="hidden" ng-model="compName.companyId" />
+                        <button ng-click="removeCompany($index)" class="btn btn-danger">Remove</button>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-3 control-label">Company</label>
                 <div class="input-group col-sm-4">
-                    <input type="text" class="form-control" placeholder="Company name" disabled ng-model="employee.companyName" />
-                    <span class="input-group-btn">
-                        <button ng-click="openCompany()" class="btn btn-link">Add Company</button>
-                    </span>
+                    <input type="tel" class="form-control" placeholder="Company name" disabled ng-model="addEmpl" />
+                    <button ng-click="openCompany()" class="btn btn-primary">Add Company</button>
                 </div>
             </div>
-            <input type="text" class="hidden" ng-model="employee.delegatedEmployeeId" />
-            <input type="text" class="hidden" ng-model="employee.companyId" />
             <div class="form-group">
                 <label class="col-sm-3 control-label"></label>
-                <button class="btn btn-success" ng-disabled="newCompany.$invalid" ng-click="addEmployee(employee)">Save</button>
-                <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
+                <button class="btn btn-success" ng-disabled="newCompany.$invalid" ng-show="!employee.id" ng-click="addEmployee(employee)">Save</button>
+                <button class="btn btn-success" ng-disabled="newCompany.$invalid" ng-show="employee.id" ng-click="updateEmployee(employee)">Update</button>
+                <button class="btn btn-danger" ng-disabled="newCompany.$invalid" ng-show="employee.id" ng-click="deleteEmployee(employee)">Delete</button>
+                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
             </div>
         </div>
     </div>

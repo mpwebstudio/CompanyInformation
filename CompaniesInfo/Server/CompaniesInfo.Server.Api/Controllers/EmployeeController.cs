@@ -15,20 +15,35 @@
             this.employeeService = employeeService;
         }
 
+        [HttpGet]
+        [Route("api/employee/getSingleEmployee/{id}")]
+        public async Task<GenericResponse> GetSingleEmployee([FromUri] int id)
+        {
+            return await employeeService.GetSingleEmployee(id);
+        }
+
         [HttpPost]
         [Route("api/employee/createemployee")]
         public async Task<GenericResponse> CreateEmployee([FromBody]CreateEmployeeRequest request)
         {
             return await employeeService.CreateEmployee(request);
         }
-
+        /// <summary>
+        /// Get employees for a selected company
+        /// </summary>
+        /// <param name="companyId"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("api/employee/getemployees/{companyId}")]
         public async Task<GenericResponse> GetEmployees(int companyId)
         {
             return await employeeService.GetEmployees(new GetEmployeesRequest {CompanyID = companyId});
         }
-
+        
+        /// <summary>
+        /// Get all live employees
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("api/employee/getAllEmployees/")]
         public async Task<GenericResponse> GetAllEmployees()

@@ -5,7 +5,20 @@
 
         $scope.employee = [];
 
-        $scope.openEmployee = function () {
+        let empId = +$routeParams.id;
+
+        if (angular.isNumber(empId) && !isNaN(empId)) {
+            employeeService.getSingleEmployee(empId,
+                function (response) {
+                    $scope.employee = response;
+                });
+        }
+
+        $scope.viewEmployee = function(empId) {
+            $window.location = '#/addEmployee/' + empId.id;
+        }
+
+        $scope.openDelegatedEmployee = function () {
 
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
@@ -19,9 +32,8 @@
             });
 
             modalInstance.result.then(function (selectedItem) {
-                $log.error(selectedItem);
-                $scope.employee.delegatedEmployee = selectedItem.fullname;
-                $scope.employee.delegatedEmployeeId = selectedItem.id;
+                $scope.employee.delegatedAuthority = selectedItem.fullname;
+                $scope.employee.delegatedAuthorityID = selectedItem.id;
 
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
@@ -43,8 +55,8 @@
 
             modalInstance.result.then(function (selectedCompany) {
                 $log.error(selectedCompany);
-                $scope.employee.companyId = selectedCompany.id;
-                $scope.employee.companyName = selectedCompany.companyName;
+                let company = { companyID: selectedCompany.id, companyName: selectedCompany.companyName };
+                $scope.employee.company.push(company);
 
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
@@ -54,6 +66,10 @@
         $scope.toggleAnimation = function () {
             $scope.animationsEnabled = !$scope.animationsEnabled;
         };
+
+        $scope.removeCompany = function(compName) {
+            $scope.employee.company.splice(compName,1);
+        }
 
         $scope.addEmployee = function (employee) {
             employeeService.addEmployee(employee,
@@ -99,6 +115,4 @@
                 $log.error(response.data);
             });
         }
-
-        
     })

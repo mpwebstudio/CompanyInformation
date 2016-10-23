@@ -2,7 +2,7 @@
     function CompanyController($scope, employeeService, $log, companyService, $window, $uibModal, $q, $routeParams) {
 
         //Checks if we are calling single company
-        var compId = +$routeParams.id;
+        let compId = +$routeParams.id;
 
         if (angular.isNumber(compId) && !isNaN(compId)) {
 

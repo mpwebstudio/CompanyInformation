@@ -1,13 +1,11 @@
 ﻿namespace CompaniesInfo.Services.Data.CompanyEmployee
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using CompaniesInfo.Data.Common.Repositories;
     using CompaniesInfo.Data.Models;
     using Server.DataTransferModels.CompanyEmployee;
-    using System.Linq;
 
     public class CompanyEmployeeService : ICompanyEmployeeService
     {
@@ -18,6 +16,11 @@
             this.companyEmployee = companyEmployee;
         }
 
+        /// <summary>
+        /// Add single employee to company, when creating a copmay
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public async Task<AddEmployeeToCompanyResponse> AddEmployeeToCompany(AddEmployeeToCompanyRequest request)
         {
             var employee = AutoMapper.Mapper.Map<CompanyEmployee>(request);
@@ -40,6 +43,30 @@
             return new AddEmployeeToCompanyResponse {Success = true, Message = "Successful", ID = employee.ID};
         }
 
+
+        /// <summary>
+        /// When creating a new employee
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public async Task<AddEmployeeToCompanyResponse> AddEmployeeToCompanies(UpdateEmployeeToCompanyRequest request)
+        {
+            foreach (var compId in request.CompanyID)
+            {
+                companyEmployee.Add(new CompanyEmployee {CompanyID = compId, EmployeeID = request.EmployeeID});
+            }
+
+            try { await companyEmployee.SaveChangesAsync(); }
+            catch (Exception) { return new AddEmployeeToCompanyResponse {Success = false, Message = "Cant add employees to company"};}
+
+            return new AddEmployeeToCompanyResponse {Success = true};
+        }
+
+        /// <summary>
+        /// update employee to company when updating company
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public async Task<AddEmployeeToCompanyResponse> UpdateEmployeeToCompany(AddEmployeeToCompanyRequest request)
         {
             var oldData = companyEmployee.All().SingleOrDefault(x => x.CompanyID == request.CompanyID && x.EmployeeID == request.OldEmployeeID);

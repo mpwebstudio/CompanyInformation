@@ -6,6 +6,21 @@
     };
 
     return {
+
+        getSingleEmployee: function(id, successcb) {
+            const url = 'api/employee/getSingleEmployee/';
+
+            $http.get(url + id)
+            .success(function(response) {
+                if (response.status === true) {
+                    successcb(response.data);
+                } else {
+                    alert('No such a User!');
+                }
+            });
+
+        },
+
         getAllEmployees: function(id, successcb) {
             const url = 'api/employee/getAllEmployees';
 
@@ -28,7 +43,6 @@
             $http.post(url, request, config)
                 .success(function (data) {
                     if (data.status === true) {
-                        $log.error(data);
                         successcb(data);
                    } 
                 });
@@ -37,6 +51,17 @@
         addEmployeeToCompany: function(id, successcb) {
             const url = 'api/employeeToCompany/addEmployeeToCompany';
             
+            $http.post(url, id, config)
+                .success(function(data) {
+                    if (data.success === true) {
+                        successcb(data);
+                    }
+                });
+        },
+
+        addEmployeeToCompanies: function(id, successcb) {
+            const url = 'api/employeeToCompany/addEmloyeeToCompanies';
+
             $http.post(url, id, config)
                 .success(function(data) {
                     if (data.success === true) {

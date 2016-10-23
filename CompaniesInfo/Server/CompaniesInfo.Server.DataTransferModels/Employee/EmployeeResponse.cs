@@ -20,9 +20,8 @@
 
         public int? DelegatedAuthorityID { get; set; }
 
+        public string DelegatedAuthority { get; set; }
+
         public List<EmployeeCompanyResponse> Company { get; set; }
-
     }
-
-
 }

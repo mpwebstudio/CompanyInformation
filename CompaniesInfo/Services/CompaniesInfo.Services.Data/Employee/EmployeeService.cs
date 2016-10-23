@@ -54,11 +54,11 @@
                     Telephone = x.Telephone,
                     DelegatedPerson = x.DelegateAuthority.CompanyEmployee.Employee.Fullname,
                     DelegatedPersonID = x.DelegateAuthority.CompanyEmployeeID
-                }).ToListAsync()
+                }).ToListAsync(),
+                Status = true
             };
         }
-
-
+        
         /// <summary>
         /// Get all live employees
         /// </summary>
@@ -74,12 +74,14 @@
                         ID = x.ID,
                         Company = x.CompanyEmployees.Where(z => z.EmployeeID == x.ID).Select(d => new EmployeeCompanyResponse { CompanyID = d.CompanyID, CompanyName = d.Company.CompanyName}).ToList(),
                         DelegatedAuthorityID = x.DelegateAuthority.CompanyEmployeeID,
+                        DelegatedAuthority = x.DelegateAuthority.CompanyEmployee.Employee.Fullname,
                         Email = x.Email,
                         Fullname = x.Fullname,
                         PreferedName = x.PreferedName,
                         Telephone = x.Telephone
                     })
-                    .ToListAsync()
+                    .ToListAsync(),
+                 Status = true
             };
         }
 
@@ -93,7 +95,8 @@
 
             return new GenericResponse
             {
-                Data = await employee.All().Where(x => x.ID == oldData.ID).ProjectTo<EmployeeResponse>().SingleAsync()
+                Data = await employee.All().Where(x => x.ID == oldData.ID).ProjectTo<EmployeeResponse>().SingleAsync(),
+                Status = true
             };
         }
 
@@ -114,6 +117,32 @@
             employee.SaveChanges();
 
             return new GenericResponse { Status = true };
+        }
+
+        public async Task<GenericResponse> GetSingleEmployee(int id)
+        {
+            var employeeDetails = employee.All().Where(x => x.ID == id && x.IsLive).Select(x => new EmployeeResponse
+            {
+                Company = x.CompanyEmployees.Where(z => z.EmployeeID == x.ID).Select(d => new EmployeeCompanyResponse { CompanyID = d.CompanyID, CompanyName = d.Company.CompanyName }).ToList(),
+                ID = x.ID,
+                Email = x.Email,
+                Fullname = x.Fullname,
+                PreferedName = x.PreferedName,
+                Telephone = x.Telephone,
+                DelegatedAuthorityID = x.DelegateAuthority.CompanyEmployeeID,
+                DelegatedAuthority = x.DelegateAuthority.CompanyEmployee.Employee.Fullname
+            }).FirstOrDefaultAsync();
+
+            if (employeeDetails == null)
+            {
+                return new GenericResponse {Status = false, Message = "No User found"};
+            }
+
+            return new GenericResponse
+            {
+                Status = true,
+                Data = employeeDetails.Result
+            };
         }
     }
 }
