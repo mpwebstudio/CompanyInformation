@@ -47,15 +47,20 @@
   <ItemGroup>
     <Compile Include="CompanyEmployee\AddEmployeeToCompanyRequest.cs" />
     <Compile Include="CompanyEmployee\AddEmployeeToCompanyResponse.cs" />
+    <Compile Include="CompanyEmployee\DeleteEmployeeToCompanyRequest.cs" />
+    <Compile Include="CompanyEmployee\UpdateEmployeeToCompanyRequest.cs" />
+    <Compile Include="CompanyEmployee\UpdateEmployeeToCompanyResponse.cs" />
     <Compile Include="Company\CreateCompanyRequest.cs" />
     <Compile Include="Company\CompanyResponse.cs" />
     <Compile Include="Company\DeleteCompanyResponse.cs" />
     <Compile Include="Company\GetCompanyRequest.cs" />
     <Compile Include="DelegateAuthority\AddDelegateAuthorityRequest.cs" />
     <Compile Include="DelegateAuthority\AddDelegatedAuthorityResponse.cs" />
+    <Compile Include="DelegateAuthority\GenericDelegatedAuthorityRequest.cs" />
     <Compile Include="Employee\CreateEmployeeRequest.cs" />
     <Compile Include="Employee\DeleteEmployeeRequest.cs" />
     <Compile Include="Employee\DeleteEmployeeResponse.cs" />
+    <Compile Include="Employee\EmployeeCompanyResponse.cs" />
     <Compile Include="Employee\EmployeeResponse.cs" />
     <Compile Include="Employee\GetEmployeesReponse.cs" />
     <Compile Include="Employee\GetEmployeesRequest.cs" />

@@ -16,5 +16,7 @@
         Task<GenericResponse> UpdateEmployee(EmployeeResponse request);
 
         Task<GenericResponse> DeleteEmployee(DeleteEmployeeRequest request);
+
+        Task<GenericResponse> GetSingleEmployee(int id);
     }
 }

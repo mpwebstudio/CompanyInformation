@@ -20,13 +20,21 @@ var dataApp = angular
             {
                 templateUrl: 'app/templates/addCompany.html'
             })
-            .when('/addEmployee',
+            .when('/addEmployee/:id',
             {
                 templateUrl: 'app/templates/addEmployee.html'
             })
-            .when('/allEmployee/:id',
+            .when('/addEmployee/',
             {
-                templateUrl: 'app/templates/allEmployee.html'
+                templateUrl: 'app/templates/addEmployee.html'
+            })
+            .when('/allEmployees/',
+            {
+                templateUrl: 'app/templates/allEmployees.html'
+            })
+            .when('/companyInfo/:id',
+            {
+                templateUrl: 'app/templates/companyInfo.html'
             })
             .otherwise({ redirectTo: '/' });
     });

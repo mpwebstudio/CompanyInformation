@@ -7,5 +7,9 @@
     public interface IDelegateAuthorityService : IService
     {
         Task<AddDelegatedAuthorityResponse> AddDelegatedAuthority(AddDelegateAuthorityRequest request);
+
+        Task<AddDelegatedAuthorityResponse> DeleteDelegatedAuthority(GenericDelegatedAuthorityRequest request);
+
+        Task<AddDelegatedAuthorityResponse> UpdateDelegatedAuthority(GenericDelegatedAuthorityRequest request);
     }
 }

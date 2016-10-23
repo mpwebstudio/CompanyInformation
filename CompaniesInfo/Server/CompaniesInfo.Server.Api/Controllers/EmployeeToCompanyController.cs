@@ -14,11 +14,47 @@
             this.companyEmployeeService = companyEmployeeService;
         }
 
+        /// <summary>
+        /// add single employee to company
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("api/employeeToCompany/addEmployeeToCompany")]
         public async Task<AddEmployeeToCompanyResponse> AddEmployeeToCompany([FromBody]AddEmployeeToCompanyRequest request)
         {
             return await companyEmployeeService.AddEmployeeToCompany(request);
+        }
+
+        /// <summary>
+        /// update employee companies
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/employeeToCompany/updateEmployeeToCompany")]
+        public async Task<UpdateEmployeeToCompanyResponse> UpdateEmployeeToCompany([FromBody] UpdateEmployeeToCompanyRequest request)
+        {
+            return await companyEmployeeService.UpdateEmployeesCompany(request);
+        }
+
+        /// <summary>
+        /// Add employee to companies
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/employeeToCompany/addEmployeeToCompanies")]
+        public async Task<AddEmployeeToCompanyResponse> AddEmployeeToCompanies([FromBody] UpdateEmployeeToCompanyRequest request)
+        {
+            return await companyEmployeeService.AddEmployeeToCompanies(request);
+        }
+
+        [HttpPost]
+        [Route("api/employeeToCompany/deleteAllEmployeeToCompany")]
+        public async Task<AddEmployeeToCompanyResponse> DeleteAllEmployeeToCompany([FromBody] DeleteEmployeeToCompanyRequest request)
+        {
+            return await companyEmployeeService.DeleteAllEmployeeToCompany(request);
         }
     }
 }

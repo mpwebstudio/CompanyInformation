@@ -1,8 +1,7 @@
-﻿<div class="row">
-    <div class="" ng-controller="HomeController">
-        <div class="row">
-            <div class="col-sm-8 text-center">
-                <h1>All Company</h1>
+﻿<div class="row" ng-controller="EmployeeController">
+    <div class="row">
+        <div class="col-sm-8 text-center">
+            <h1 class="text-center">All users</h1>
             </div>
             <div class="col-sm-4">
                 <div class="btn-toolbar pull-right">
@@ -13,14 +12,14 @@
         </div>
         <div class="row">
             <ul class="list-unstyled">
-                <li ng-repeat="todo in allCompany" ng-if="todo.companyName != null">
+                <li ng-repeat="emp in allEmployees" ng-if="emp.fullname != null">
                     <div class="col-sm-3 form-group">
-                        <div class="">{{todo.companyName}}</div>
-                        <div>Contact Name: {{todo.contactName}}</div>
-                        <div>Telephone: {{todo.contactNumber}}</div>
+                        <div>Contact Name: {{emp.fullname}}</div>
+                        <div>Prefered: {{emp.preferedName}}</div>
+                        <div>Telephone: {{emp.telephone}}</div>
                         <div class="control">
                             <div class="pull-right">
-                                <button class="btn btn-primary btnHide" type="button" ng-click="viewCompany(todo)">View</button>
+                                <button class="btn btn-primary btnHide" type="button" ng-click="viewEmployee(emp)">View</button>
                             </div>
                         </div>
                     </div>
@@ -28,4 +27,3 @@
             </ul>
         </div>
     </div>
-</div>

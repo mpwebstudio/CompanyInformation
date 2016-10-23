@@ -1,0 +1,124 @@
+﻿<div class="row" ng-controller="CompanyController">
+    <div class="form-horizontal" >
+        <div class="row">
+            <div class="text-center">
+                <h1>{{companyInfo.companyName}} Details</h1>
+            </div>
+            <span class="pull-right">
+                <button class="btn navbar-btn btn-primary" ng-click="allUsers()">Users</button>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Company</label>
+            <input type="text" class="form-control" disabled ng-model="companyInfo.companyName" />
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Prime Contact Name</label>
+            <input type="text" class="form-control" disabled ng-model="companyInfo.contactName" />
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Preferred Name</label>
+            <input type="text" class="form-control" disabled ng-model="companyInfo.contactPreferName" />
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Telephone</label>
+            <input type="text" class="form-control" disabled ng-model="companyInfo.contactNumber" />
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Email</label>
+            <input type="text" class="form-control" disabled ng-model="companyInfo.contactEmail" />
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3"></label>
+            <button class="btn btn-primary btnHide" type="button" ng-click="editCompany(companyInfo)">Edit</button>
+            <button class="btn btn-danger btnHide" type="button" ng-click="deleteCompany(companyInfo)">Delete</button>
+        </div>
+    </div>
+    <div class="row" ng-show="allEmployees">
+        <div class="row">
+            <div class="text-center">
+                <h2>{{companyInfo.companyName}} users</h2>
+            </div>
+            <ul class="list-unstyled">
+                <li ng-repeat="emp in allEmployees" ng-if="emp.fullname != null">
+                    <div class="col-sm-3 form-group">
+                        <div><b>Contact Name:</b> {{emp.fullname}}</div>
+                        <div><b>Preferred Name:</b> {{emp.preferedName}}</div>
+                        <div><b>Telephone:</b> {{emp.telephone}}</div>
+                        <div class="control">
+                            <div class="pull-right">
+                                <button class="btn btn-primary btnHide" type="button" ng-click="viewEmployee(emp)">View</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/ng-template" id="editCompany.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Edit company - {{company.companyName}}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Company</label>
+            <input type="text" class="form-control" required ng-model="company.companyName" />
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Prime Contact</label>
+            <div class="input-group col-sm-8">
+                <input type="text" class="form-control" required ng-model="company.contactName" />
+                <button class="btn btn-primary btnHide" type="button" ng-click="openEmployee()">Users</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Preferred Name</label>
+            <input type="text" class="form-control" ng-model="company.contactPreferName" />
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Telephone</label>
+            <input type="text" class="form-control" required ng-model="company.contactNumber" />
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Email</label>
+            <input type="text" class="form-control" required ng-model="company.contactEmail" />
+        </div>
+        <div class="form-group hidden">
+            <label class="col-sm-3 control-label">Company</label>
+            <input type="hidden" class="form-control" required ng-model="company.id" />
+        </div>
+        <div class="form-group hidden">
+            <label class="col-sm-3 control-label">Company</label>
+            <input type="hidden" class="form-control" required ng-model="company.primeContactID" />
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="$event.preventDefault(); updatedCompanyData = company; okCompany()">Save</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="currentEmployees.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Select an User</h3>
+    </div>
+    <div class="modal-body companies">
+        <ul>
+            <li ng-repeat="item in items">
+                <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item.fullname }}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <span class="pull-left">
+            Selected: <b>{{ selected.item.fullname }}</b>
+        </span>
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>

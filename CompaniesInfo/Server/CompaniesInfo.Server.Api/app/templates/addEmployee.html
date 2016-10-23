@@ -1,0 +1,118 @@
+﻿<div class="row" ng-controller="EmployeeController">
+    
+    <div class="row">
+        <div class="form-horizontal">
+            <div class="col-sm-12 text-center">
+                <h1>{{employee.id != null ? 'Update' : 'Add'}} User</h1>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Fullname</label>
+                <input type="text" class="form-control" placeholder="Contact name" required ng-model="employee.fullname"/>
+            </div>
+            <div class="form-group hidden">
+                <input type="text" class="form-control" placeholder="id" id="emplId" ng-model="employee.id"/>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Preferred name</label>
+                <input type="tel" class="form-control" placeholder="Preferred name" required ng-model="employee.preferedName"/>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Telephone</label>
+                <input type="tel" class="form-control" placeholder="Telephone" required ng-model="employee.telephone"/>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Email address</label>
+                <input type="email" class="form-control" placeholder="Email address" ng-model="employee.email"/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Delegated Employee</label>
+                <div class="input-group col-sm-5">
+                    <input type="text" class="form-control" placeholder="Contact name" disabled ng-model="employee.delegatedAuthority" />
+                    <input type="text" class="hidden" ng-model="employee.delegatedAuthorityID" />
+                    <button ng-click="openDelegatedEmployee()" ng-class="employee.delegatedAuthority ? 'btn-success' : 'btn-primary'" class="btn">{{employee.delegatedAuthority == null? 'Add' : 'Update'}} User</button>
+                    <button ng-click="removeAuthority()" ng-show="employee.delegatedAuthorityID" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+            <div ng-repeat="compName in employee.company">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Company</label>
+                    <div class="input-group col-sm-4">
+                        <input type="text" class="form-control" placeholder="Company name" disabled ng-model="compName.companyName" />
+                        <input type="text" class="hidden" ng-model="compName.companyId" />
+                        <button ng-click="removeCompany($index)" class="btn btn-danger">Remove</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Company</label>
+                <div class="input-group col-sm-4">
+                    <input type="tel" class="form-control" placeholder="Company name" disabled ng-model="addEmpl" />
+                    <button ng-click="openCompany()" class="btn btn-primary">Add Company</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label"></label>
+                <button class="btn btn-success" ng-disabled="newCompany.$invalid" ng-show="!employee.id" ng-click="addEmployee(employee)">Save</button>
+                <button class="btn btn-success" ng-disabled="newCompany.$invalid" ng-show="employee.id" ng-click="updateEmployee(employee)">Update</button>
+                <button class="btn btn-danger" ng-disabled="newCompany.$invalid" ng-show="employee.id" ng-click="deleteEmployee(employee)">Delete</button>
+                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="employeeContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Select an User</h3>
+    </div>
+    <div class="modal-body companies">
+        <ul>
+            <li ng-repeat="item in items">
+                <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item.fullname }}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <span class="pull-left">
+            Selected: <b>{{ selected.item.fullname }}</b>
+        </span>
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="companyContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Select a Company</h3>
+    </div>
+    <div class="modal-body companies">
+        <ul>
+            <li ng-repeat="item in companies">
+                <a href="#" ng-click="$event.preventDefault(); updatedComp.item = item">{{ item.companyName }}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <span class="pull-left">
+            Selected: <b>{{ updatedComp.item.companyName }}</b>
+        </span>
+        <button class="btn btn-primary" type="button" ng-click="okComp()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="deleteUser.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Are sure you want to delete {{employee.fullname}}</h3>
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" type="button" ng-click="selected = true;okDelete()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>

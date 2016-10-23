@@ -92,7 +92,7 @@
                 var req = AutoMapper.Mapper.Map<CreateEmployeeRequest>(request);
 
                 var empResult = await _employeeService.CreateEmployee(req);
-                if (!empResult.Status)
+                if (!empResult.Success)
                 {
                     return new CompanyResponse { Message = "Something went wrong" };
                 }

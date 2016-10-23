@@ -23,3 +23,8 @@ textarea {
 .control:hover .btnHide {
     opacity: 1;
 }
+
+.companies {
+    overflow: scroll;
+    max-height:400px;
+}

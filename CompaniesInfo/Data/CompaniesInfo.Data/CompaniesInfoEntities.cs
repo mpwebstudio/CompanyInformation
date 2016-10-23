@@ -30,10 +30,10 @@
                 .WithRequired(e => e.Company) 
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<CompanyEmployee>()
-                .HasMany(e => e.DelegateAuthorities)
-                .WithRequired(e => e.CompanyEmployee)
-                .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<Employee>()
+            //    .HasMany(e => e.DelegateAuthorities)
+            //    .WithRequired(e => e.CompanyEmployee)
+            //    .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Employee>()
                 .HasMany(e => e.CompanyEmployees)

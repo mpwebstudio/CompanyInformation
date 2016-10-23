@@ -43,7 +43,7 @@
             return await companyService.UpdateCompany(request);
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("api/company/deleteCompany")]
         public async Task<DeleteCompanyResponse> DeleteCompany([FromBody] GetCompanyRequest request)
         {
