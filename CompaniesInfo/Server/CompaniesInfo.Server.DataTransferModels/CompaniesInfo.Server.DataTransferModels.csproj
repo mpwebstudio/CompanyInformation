@@ -55,6 +55,7 @@
     <Compile Include="Company\GetCompanyRequest.cs" />
     <Compile Include="DelegateAuthority\AddDelegateAuthorityRequest.cs" />
     <Compile Include="DelegateAuthority\AddDelegatedAuthorityResponse.cs" />
+    <Compile Include="DelegateAuthority\GenericDelegatedAuthorityRequest.cs" />
     <Compile Include="Employee\CreateEmployeeRequest.cs" />
     <Compile Include="Employee\DeleteEmployeeRequest.cs" />
     <Compile Include="Employee\DeleteEmployeeResponse.cs" />

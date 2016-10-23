@@ -1,0 +1,18 @@
+﻿<div class="row" ng-controller="EmployeeController">
+    <div class="row">
+        <ul class="list-unstyled">
+            <li ng-repeat="emp in allEmployees" ng-if="emp.fullname != null">
+                <div class="col-sm-3 form-group">
+                    <div>Contact Name: {{emp.fullname}}</div>
+                    <div>Prefered: {{emp.preferedName}}</div>
+                    <div>Telephone: {{emp.telephone}}</div>
+                    <div class="control">
+                        <div class="pull-right">
+                            <button class="btn btn-primary btnHide" type="button" ng-click="viewEmployee(emp)">View</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

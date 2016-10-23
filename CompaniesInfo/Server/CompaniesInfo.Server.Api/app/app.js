@@ -24,9 +24,9 @@ var dataApp = angular
             {
                 templateUrl: 'app/templates/addEmployee.html'
             })
-            .when('/allEmployee/:id',
+            .when('/allEmployees/',
             {
-                templateUrl: 'app/templates/allEmployee.html'
+                templateUrl: 'app/templates/allEmployees.html'
             })
             .when('/companyInfo/:id',
             {

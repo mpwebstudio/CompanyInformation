@@ -272,6 +272,7 @@
     <Content Include="app\factory\employeeService.js" />
     <Content Include="app\templates\addCompany.html" />
     <Content Include="app\templates\addEmployee.html" />
+    <Content Include="app\templates\allEmployees.html" />
     <Content Include="app\templates\companyInfo.html" />
     <Content Include="app\templates\home.html" />
     <Content Include="app\templates\modal.html" />

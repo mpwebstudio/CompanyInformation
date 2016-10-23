@@ -1,6 +1,6 @@
 ﻿dataApp.controller('EmployeeController',
-    function EmployeeController($scope, employeeService, $log, companyService, $window, $uibModal, $q, $routeParams) {
-        
+    function EmployeeController($scope, employeeService, $log, companyService, $window, $uibModal, $q, $routeParams, $location) {
+
         $scope.animationsEnabled = true;
 
         $scope.employee = [];
@@ -57,12 +57,12 @@
 
         $scope.addEmployee = function (employee) {
             employeeService.addEmployee(employee,
-                function(response) {
+                function (response) {
                     if (response.status === true) {
                         if (employee.companyId != null) {
                             let request = { employeeID: response.data.id, companyId: employee.companyId };
                             employeeService.addEmployeeToCompany(request,
-                                function(response) {
+                                function (response) {
                                     if (response.success === false) {
                                         alert('Something went wromg with Employee to Company');
                                         return;
@@ -76,7 +76,7 @@
                                 authorityEmployeeID: employee.delegatedEmployeeId
                             };
                             employeeService.addDelegatedAuthority(request,
-                                function(response) {
+                                function (response) {
                                     if (response.success === false) {
                                         alert('Something went wrong with authority');
                                         return;
@@ -84,10 +84,21 @@
                                 });
                         }
                         alert('User added successfuly');
-                        $window,location = '#/'
+                        $window.location = '#/';
                     } else {
                         alert('Can not add the Client');
                     }
                 });
         }
+
+        $scope.allEmployees = [];
+
+        if ($location.path() == '/allEmployees/') {
+            employeeService.getAllEmployees(1, function (response) {
+                $scope.allEmployees = response.data;
+                $log.error(response.data);
+            });
+        }
+
+        
     })
