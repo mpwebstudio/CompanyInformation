@@ -34,6 +34,8 @@
 
             modalInstance.result.then(function () {
                 companyService.editCompany(company);
+                alert('Company details updated');
+
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
             });
@@ -136,6 +138,10 @@
 
         $scope.viewEmployee = function(emp) {
             $window.location = '#/addEmployee/' + emp.id;
+        }
+
+        $scope.cancel = function () {
+            $window.location = '#/allEmployees';
         }
     });
 

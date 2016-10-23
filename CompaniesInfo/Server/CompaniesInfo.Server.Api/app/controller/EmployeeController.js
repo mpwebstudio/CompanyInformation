@@ -48,6 +48,10 @@
             });
         };
 
+        function checkAvailability(arr, val) {
+            return arr.some(arrVal => val === arrVal.companyID);
+        }
+
         $scope.openCompany = function () {
 
             var modalInstance = $uibModal.open({
@@ -67,8 +71,13 @@
                     $scope.employee.company = [];
                     $scope.employee.company.push(company);
                 } else {
-                    $scope.employee.company.push(company);
-                    isCompanyChange = true;
+
+                    if (checkAvailability($scope.employee.company, company.companyID)) {
+                        alert('Company exist')
+                    } else {
+                        $scope.employee.company.push(company);
+                        isCompanyChange = true;
+                    }
                 }
 
             }, function () {
@@ -182,6 +191,8 @@
                                         }
                                     });
                             }
+
+                            alert('User details updated');
                         }
 
                         if (response.success === true && isCompanyChange === true) {
@@ -208,6 +219,9 @@
                                         }
                                     });
                             }
+
+                            alert('User details updated');
+
                         }
 
                         if (response.success === false) {
@@ -249,6 +263,6 @@
         }
 
         $scope.cancel = function() {
-            $window.location = '/allEmployees';
+            $window.location = '#/allEmployees';
         }
     })
