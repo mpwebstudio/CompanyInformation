@@ -32,22 +32,54 @@
             };
         }
 
+
+        /// <summary>
+        /// Get all employees for a selected company
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public async Task<GenericResponse> GetEmployees(GetEmployeesRequest request)
         {
             return new GenericResponse
             {
                 Data = await employee.All()
-                    .Where(x => x.CompanyEmployees.Any(z => z.CompanyID == request.CompanyID) && x.IsLive)
-                    .ProjectTo<GetEmployeesReponse>().ToListAsync()
+                .Where(x => x.CompanyEmployees.Any(z => z.CompanyID == request.CompanyID) && x.IsLive).Select(x => new GetEmployeesReponse
+                {
+                    CompanyID = request.CompanyID,
+                    CompanyName = x.Companies.FirstOrDefault(z => z.ID == request.CompanyID).CompanyName,
+                    ID = x.ID,
+                    Email = x.Email,
+                    Fullname = x.Fullname,
+                    PreferedName = x.PreferedName,
+                    Telephone = x.Telephone,
+                    DelegatedPerson = x.DelegateAuthority.CompanyEmployee.Employee.Fullname,
+                    DelegatedPersonID = x.DelegateAuthority.CompanyEmployeeID
+                }).ToListAsync()
             };
         }
 
+
+        /// <summary>
+        /// Get all live employees
+        /// </summary>
+        /// <returns></returns>
         public async Task<GenericResponse> GetAllEmployees()
         {
             return new GenericResponse
             {
                 Data = await employee.All()
-                    .Where(x => x.IsLive).ProjectTo<GetEmployeesReponse>().ToListAsync()
+                    .Where(x => x.IsLive)
+                    .Select(x => new EmployeeResponse
+                    {
+                        ID = x.ID,
+                        Company = x.CompanyEmployees.Where(z => z.EmployeeID == x.ID).Select(d => new EmployeeCompanyResponse { CompanyID = d.CompanyID, CompanyName = d.Company.CompanyName}).ToList(),
+                        DelegatedAuthorityID = x.DelegateAuthority.CompanyEmployeeID,
+                        Email = x.Email,
+                        Fullname = x.Fullname,
+                        PreferedName = x.PreferedName,
+                        Telephone = x.Telephone
+                    })
+                    .ToListAsync()
             };
         }
 

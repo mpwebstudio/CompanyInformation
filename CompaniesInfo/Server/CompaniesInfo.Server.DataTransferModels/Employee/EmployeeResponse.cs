@@ -1,5 +1,6 @@
 ﻿namespace CompaniesInfo.Server.DataTransferModels.Employee
 {
+    using System.Collections.Generic;
     using Common.Mapping;
     using Data.Models;
 
@@ -17,5 +18,11 @@
 
         public bool IsLive { get; set; }
 
+        public int? DelegatedAuthorityID { get; set; }
+
+        public List<EmployeeCompanyResponse> Company { get; set; }
+
     }
+
+
 }

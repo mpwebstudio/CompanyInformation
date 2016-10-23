@@ -1,7 +1,7 @@
 ﻿dataApp.controller('CompanyController',
     function CompanyController($scope, employeeService, $log, companyService, $window, $uibModal, $q, $routeParams) {
 
-        //Check if we are calling single company
+        //Checks if we are calling single company
         var compId = +$routeParams.id;
 
         if (angular.isNumber(compId) && !isNaN(compId)) {

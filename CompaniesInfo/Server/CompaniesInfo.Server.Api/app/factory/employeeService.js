@@ -15,10 +15,17 @@
                 });
         },
 
-        addEmployee: function(employee, successcb) {
-            const url = 'api/employee/createemployee';
+        addEmployee: function (employee, successcb) {
 
-            $http.post(url, employee, config)
+            const url = 'api/employee/createemployee';
+            let request = {
+                fullname: employee.fullname,
+                preferedName: employee.preferedName,
+                telephone: employee.telephone,
+                email: employee.email
+            };
+
+            $http.post(url, request, config)
                 .success(function (data) {
                     if (data.status === true) {
                         $log.error(data);
@@ -30,6 +37,17 @@
         addEmployeeToCompany: function(id, successcb) {
             const url = 'api/employeeToCompany/addEmployeeToCompany';
             
+            $http.post(url, id, config)
+                .success(function(data) {
+                    if (data.success === true) {
+                        successcb(data);
+                    }
+                });
+        },
+
+        addDelegatedAuthority: function(id, successcb) {
+            const url = 'api/delegatedAuthority/addAuthority';
+
             $http.post(url, id, config)
                 .success(function(data) {
                     if (data.success === true) {

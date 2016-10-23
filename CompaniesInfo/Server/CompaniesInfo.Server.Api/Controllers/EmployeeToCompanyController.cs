@@ -20,5 +20,12 @@
         {
             return await companyEmployeeService.AddEmployeeToCompany(request);
         }
+
+        [HttpPost]
+        [Route("api/employeeToCompany/updateEmployeeToCompany")]
+        public async Task<UpdateEmployeeToCompanyResponse> UpdateEmployeeToCompany([FromBody] UpdateEmployeeToCompanyRequest request)
+        {
+            return await companyEmployeeService.UpdateEmployeesCompany(request);
+        }
     }
 }

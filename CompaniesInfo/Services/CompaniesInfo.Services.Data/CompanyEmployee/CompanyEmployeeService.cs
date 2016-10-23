@@ -1,11 +1,13 @@
 ﻿namespace CompaniesInfo.Services.Data.CompanyEmployee
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using CompaniesInfo.Data.Common.Repositories;
     using CompaniesInfo.Data.Models;
     using Server.DataTransferModels.CompanyEmployee;
+    using System.Linq;
 
     public class CompanyEmployeeService : ICompanyEmployeeService
     {
@@ -56,6 +58,29 @@
             catch(Exception ex) { return new AddEmployeeToCompanyResponse { ID = oldData.ID, Success = false, Message = "No employee found" }; }
 
             return new AddEmployeeToCompanyResponse {ID = oldData.ID, Success = true};
+        }
+
+
+        //TODO: Refactor it!!!
+        public async Task<UpdateEmployeeToCompanyResponse> UpdateEmployeesCompany(UpdateEmployeeToCompanyRequest request)
+        {
+            var oldData = companyEmployee.All().Where(x => x.EmployeeID == request.EmployeeID);
+
+            foreach (var toDelete in oldData)
+            {
+                companyEmployee.Delete(toDelete);
+            }
+
+            await companyEmployee.SaveChangesAsync();
+
+            foreach (var company in request.CompanyID)
+            {
+                companyEmployee.Add(new CompanyEmployee {CompanyID = company, EmployeeID = request.EmployeeID});
+            }
+
+            await companyEmployee.SaveChangesAsync();
+
+            return new UpdateEmployeeToCompanyResponse {Success = true};
         }
     }
 }

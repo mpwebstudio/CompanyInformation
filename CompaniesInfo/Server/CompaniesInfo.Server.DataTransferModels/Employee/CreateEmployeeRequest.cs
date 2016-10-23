@@ -20,6 +20,6 @@
         [EmailAddress(ErrorMessage = "Invalid email address")]
         public string Email { get; set; }
 
-        public bool isLive { get; set; } = true;
+        public bool IsLive { get; set; } = true;
     }
 }

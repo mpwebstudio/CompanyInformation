@@ -9,5 +9,7 @@
         Task<AddEmployeeToCompanyResponse> AddEmployeeToCompany(AddEmployeeToCompanyRequest request);
 
         Task<AddEmployeeToCompanyResponse> UpdateEmployeeToCompany(AddEmployeeToCompanyRequest request);
+
+        Task<UpdateEmployeeToCompanyResponse> UpdateEmployeesCompany(UpdateEmployeeToCompanyRequest request);
     }
 }

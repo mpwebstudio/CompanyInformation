@@ -4,7 +4,7 @@
     using Common.Mapping;
     using Data.Models;
 
-    public class AddDelegateAuthorityRequest : IMapFrom<DelegateAuthority>, IHaveCustomMapping
+    public class GenericDelegatedAuthorityRequest : IMapFrom<DelegateAuthority>, IHaveCustomMapping
     {
         public int EmployeeID { get; set; }
 
@@ -14,6 +14,7 @@
         {
             Mapper.CreateMap<AddDelegateAuthorityRequest, DelegateAuthority>()
                 .ForMember(t => t.CompanyEmployeeID, a => a.MapFrom(f => f.AuthorityEmployeeID));
+
         }
     }
 }

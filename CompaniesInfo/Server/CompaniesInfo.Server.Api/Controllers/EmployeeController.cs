@@ -17,7 +17,7 @@
 
         [HttpPost]
         [Route("api/employee/createemployee")]
-        public async Task<GenericResponse> CreateEmployee(CreateEmployeeRequest request)
+        public async Task<GenericResponse> CreateEmployee([FromBody]CreateEmployeeRequest request)
         {
             return await employeeService.CreateEmployee(request);
         }

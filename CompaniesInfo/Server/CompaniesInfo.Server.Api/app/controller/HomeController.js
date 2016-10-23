@@ -10,8 +10,9 @@
             $window.location = '#/addCompany';
         };
 
-        
-
+        $scope.addEmployee = function() {
+            $window.location = '#/addEmployee';
+        }
         $scope.viewCompany = function(company) {
             $window.location = '#/companyInfo/' + company.id;
         };
