@@ -10,25 +10,25 @@
     public class DelegateAuthorityService : IDelegateAuthorityService
     {
         private readonly IRepository<DelegateAuthority> delegateAuthority;
+        private readonly IRepository<Employee> employee;
 
-        public DelegateAuthorityService(IRepository<DelegateAuthority> delegateAuthority)
+        public DelegateAuthorityService(IRepository<DelegateAuthority> delegateAuthority, IRepository<Employee> employee)
         {
             this.delegateAuthority = delegateAuthority;
+            this.employee = employee;
         }
 
         public async Task<AddDelegatedAuthorityResponse> AddDelegatedAuthority(AddDelegateAuthorityRequest request)
         {
-            var companyEmploee = delegateAuthority.All()
-                .FirstOrDefault(x => x.Employee.ID == request.AuthorityEmployeeID);
+            var companyEmploee = employee.All()
+                .FirstOrDefault(x => x.ID == request.AuthorityEmployeeID);
             if (companyEmploee == null)
             {
                 return new AddDelegatedAuthorityResponse {Message = "No employee found", Success = false};
             }
-            var companyEmployee =
-                    companyEmploee
-                        .CompanyEmployee.ID;
+            var companyEmployee = companyEmploee.ID;
 
-                var delegateToAdd = new DelegateAuthority { CompanyEmployeeID = companyEmployee, EmployeeID = request.EmployeeID};
+                var delegateToAdd = new DelegateAuthority { CompanyEmployeeID = companyEmployee, EmployeeID =  request.EmployeeID};
 
                 delegateAuthority.Add(delegateToAdd);
             
@@ -46,7 +46,9 @@
                 return new AddDelegatedAuthorityResponse {Success = false, Message = "no such a user"};
             }
 
-            AutoMapper.Mapper.Map(request, oldData);
+            oldData.EmployeeID = request.EmployeeID;
+            oldData.CompanyEmployeeID = request.AuthorityEmployeeID;
+                
             await delegateAuthority.SaveChangesAsync();
 
             return new AddDelegatedAuthorityResponse {Success = true};
@@ -62,6 +64,8 @@
             }
 
             delegateAuthority.Delete(oldData);
+
+            await delegateAuthority.SaveChangesAsync();
 
             return new AddDelegatedAuthorityResponse { Success = true };
         }

@@ -64,6 +64,15 @@
                 .success(function (data) {
                     successcb(data);
                 });
+        },
+
+        getAllCompanyUsers: function(companyId, successcd) {
+            const url = 'api/employee/getemployees/';
+
+            $http.get(url + companyId)
+                .success(function(data) {
+                    successcd(data);
+                });
         }
     }
 })

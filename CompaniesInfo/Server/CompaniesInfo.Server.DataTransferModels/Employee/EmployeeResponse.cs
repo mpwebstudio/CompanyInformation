@@ -16,7 +16,7 @@
 
         public string Email { get; set; }
 
-        public bool IsLive { get; set; }
+        public bool IsLive { get; set; } = true;
 
         public int? DelegatedAuthorityID { get; set; }
 

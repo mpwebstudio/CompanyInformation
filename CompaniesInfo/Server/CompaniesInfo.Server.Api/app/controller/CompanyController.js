@@ -124,5 +124,18 @@
                     });
             }
         }
+
+        $scope.allUsers = function () {
+            
+            companyService.getAllCompanyUsers(compId,
+                function(response) {
+                    $log.error(response);
+                    $scope.allEmployees = response.data;
+                });
+        }
+
+        $scope.viewEmployee = function(emp) {
+            $window.location = '#/addEmployee/' + emp.id;
+        }
     });
 

@@ -33,7 +33,7 @@
         [Route("api/delegatedAuthority/deleteAuthority")]
         public async Task<AddDelegatedAuthorityResponse> DeleteAuthority([FromBody]GenericDelegatedAuthorityRequest request)
         {
-            return await delegateAuthirityService.UpdateDelegatedAuthority(request);
+            return await delegateAuthirityService.DeleteDelegatedAuthority(request);
         }
     }
 }

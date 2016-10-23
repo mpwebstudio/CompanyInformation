@@ -1,18 +1,29 @@
 ﻿<div class="row" ng-controller="EmployeeController">
     <div class="row">
-        <ul class="list-unstyled">
-            <li ng-repeat="emp in allEmployees" ng-if="emp.fullname != null">
-                <div class="col-sm-3 form-group">
-                    <div>Contact Name: {{emp.fullname}}</div>
-                    <div>Prefered: {{emp.preferedName}}</div>
-                    <div>Telephone: {{emp.telephone}}</div>
-                    <div class="control">
-                        <div class="pull-right">
-                            <button class="btn btn-primary btnHide" type="button" ng-click="viewEmployee(emp)">View</button>
+        <div class="col-sm-8 text-center">
+            <h1 class="text-center">All users</h1>
+            </div>
+            <div class="col-sm-4">
+                <div class="btn-toolbar pull-right">
+                    <button class="btn navbar-btn btn-success" ng-click="addCompany()">Add company</button>
+                    <button class="btn navbar-btn btn-primary" ng-click="addEmployee()">Add user</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <ul class="list-unstyled">
+                <li ng-repeat="emp in allEmployees" ng-if="emp.fullname != null">
+                    <div class="col-sm-3 form-group">
+                        <div>Contact Name: {{emp.fullname}}</div>
+                        <div>Prefered: {{emp.preferedName}}</div>
+                        <div>Telephone: {{emp.telephone}}</div>
+                        <div class="control">
+                            <div class="pull-right">
+                                <button class="btn btn-primary btnHide" type="button" ng-click="viewEmployee(emp)">View</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>

@@ -49,5 +49,12 @@
         {
             return await companyEmployeeService.AddEmployeeToCompanies(request);
         }
+
+        [HttpPost]
+        [Route("api/employeeToCompany/deleteAllEmployeeToCompany")]
+        public async Task<AddEmployeeToCompanyResponse> DeleteAllEmployeeToCompany([FromBody] DeleteEmployeeToCompanyRequest request)
+        {
+            return await companyEmployeeService.DeleteAllEmployeeToCompany(request);
+        }
     }
 }

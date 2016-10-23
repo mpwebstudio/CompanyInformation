@@ -28,7 +28,7 @@
             return new GenericResponse
             {
                 Data = await employee.All().Where(x => x.ID == emp.ID).ProjectTo<EmployeeResponse>().SingleAsync(),
-                Status = true
+                Success = true
             };
         }
 
@@ -52,10 +52,10 @@
                     Fullname = x.Fullname,
                     PreferedName = x.PreferedName,
                     Telephone = x.Telephone,
-                    DelegatedPerson = x.DelegateAuthority.CompanyEmployee.Employee.Fullname,
-                    DelegatedPersonID = x.DelegateAuthority.CompanyEmployeeID
+                    DelegatedPersonID = x.DelegateAuthority.CompanyEmployeeID,
+                    DelegatedPerson = x.DelegateAuthority.CompanyEmployee.Fullname
                 }).ToListAsync(),
-                Status = true
+                Success = true
             };
         }
         
@@ -74,14 +74,14 @@
                         ID = x.ID,
                         Company = x.CompanyEmployees.Where(z => z.EmployeeID == x.ID).Select(d => new EmployeeCompanyResponse { CompanyID = d.CompanyID, CompanyName = d.Company.CompanyName}).ToList(),
                         DelegatedAuthorityID = x.DelegateAuthority.CompanyEmployeeID,
-                        DelegatedAuthority = x.DelegateAuthority.CompanyEmployee.Employee.Fullname,
+                        DelegatedAuthority = x.DelegateAuthority.CompanyEmployee.Fullname,
                         Email = x.Email,
                         Fullname = x.Fullname,
                         PreferedName = x.PreferedName,
                         Telephone = x.Telephone
                     })
                     .ToListAsync(),
-                 Status = true
+                 Success = true
             };
         }
 
@@ -96,7 +96,7 @@
             return new GenericResponse
             {
                 Data = await employee.All().Where(x => x.ID == oldData.ID).ProjectTo<EmployeeResponse>().SingleAsync(),
-                Status = true
+                Success = true
             };
         }
 
@@ -104,19 +104,30 @@
         {
             var oldData = await employee.All().SingleOrDefaultAsync(x => x.ID == request.EmployeeID);
 
+            var isPrime = employee.All().FirstOrDefault(x => x.Companies.Any(z => z.EmployeeID == request.EmployeeID));
+
+            if (isPrime != null)
+            {
+                return new GenericResponse
+                {
+                    Message = "Employee is prime contact for Company",
+                    Success = false
+                };
+            }
+
             if (oldData == null)
             {
                 return new GenericResponse
                 {
                     Message = "No employee found",
-                    Status = false
+                    Success = false
                 };
             }
 
             oldData.IsLive = false;
             employee.SaveChanges();
 
-            return new GenericResponse { Status = true };
+            return new GenericResponse { Success = true };
         }
 
         public async Task<GenericResponse> GetSingleEmployee(int id)
@@ -130,18 +141,18 @@
                 PreferedName = x.PreferedName,
                 Telephone = x.Telephone,
                 DelegatedAuthorityID = x.DelegateAuthority.CompanyEmployeeID,
-                DelegatedAuthority = x.DelegateAuthority.CompanyEmployee.Employee.Fullname
-            }).FirstOrDefaultAsync();
+                DelegatedAuthority = x.DelegateAuthority.CompanyEmployee.Fullname
+            }).FirstOrDefault();
 
             if (employeeDetails == null)
             {
-                return new GenericResponse {Status = false, Message = "No User found"};
+                return new GenericResponse {Success = false, Message = "No User found"};
             }
 
             return new GenericResponse
             {
-                Status = true,
-                Data = employeeDetails.Result
+                Success = true,
+                Data = employeeDetails
             };
         }
     }

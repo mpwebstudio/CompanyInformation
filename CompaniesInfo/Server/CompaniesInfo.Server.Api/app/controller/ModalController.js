@@ -1,5 +1,5 @@
 ﻿dataApp.controller('ModalController', 
-    function ModalController($scope, $uibModalInstance, items, employeeService, companyService) {
+    function ModalController($scope, $uibModalInstance, items, employeeService, companyService, $window) {
 
         employeeService.getAllEmployees(1,
                     function (data) {
@@ -25,13 +25,9 @@
 
         $scope.cancel = function () {
             $uibModalInstance.dismiss('cancel');
+            
         };
-
-        //$scope.editCompany = function(company) {
-        //    $scope.editCompany = company;
-        //    $uibModalInstance.close($scope.edited);
-        //};
-
+        
         $scope.okCompany = function() {
             $uibModalInstance.close($scope.updatedCompany);
         }
@@ -39,4 +35,9 @@
         $scope.okComp = function () {
             $uibModalInstance.close($scope.updatedComp.item);
         }
+
+        $scope.okDelete = function() {
+            $uibModalInstance.close($scope.selected);
+        }
+
     });

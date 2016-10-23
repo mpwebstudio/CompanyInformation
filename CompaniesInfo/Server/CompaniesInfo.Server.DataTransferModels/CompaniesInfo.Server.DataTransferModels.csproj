@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="CompanyEmployee\AddEmployeeToCompanyRequest.cs" />
     <Compile Include="CompanyEmployee\AddEmployeeToCompanyResponse.cs" />
+    <Compile Include="CompanyEmployee\DeleteEmployeeToCompanyRequest.cs" />
     <Compile Include="CompanyEmployee\UpdateEmployeeToCompanyRequest.cs" />
     <Compile Include="CompanyEmployee\UpdateEmployeeToCompanyResponse.cs" />
     <Compile Include="Company\CreateCompanyRequest.cs" />

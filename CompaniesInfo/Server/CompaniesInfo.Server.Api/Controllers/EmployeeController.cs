@@ -58,7 +58,7 @@
             return await employeeService.UpdateEmployee(request);
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("api/employee/deleteEmployee")]
         public async Task<GenericResponse> DeleteEmployee([FromBody] DeleteEmployeeRequest request)
         {

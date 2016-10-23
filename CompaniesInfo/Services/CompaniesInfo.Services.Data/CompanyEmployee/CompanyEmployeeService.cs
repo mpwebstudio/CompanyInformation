@@ -43,7 +43,6 @@
             return new AddEmployeeToCompanyResponse {Success = true, Message = "Successful", ID = employee.ID};
         }
 
-
         /// <summary>
         /// When creating a new employee
         /// </summary>
@@ -108,6 +107,20 @@
             await companyEmployee.SaveChangesAsync();
 
             return new UpdateEmployeeToCompanyResponse {Success = true};
+        }
+
+        public async Task<AddEmployeeToCompanyResponse> DeleteAllEmployeeToCompany(DeleteEmployeeToCompanyRequest request)
+        {
+            var toDelete = companyEmployee.All().Where(x => x.EmployeeID == request.EmployeeID);
+
+            foreach (var record in toDelete)
+            {
+                companyEmployee.Delete(record);
+            }
+
+            await companyEmployee.SaveChangesAsync();
+
+            return new AddEmployeeToCompanyResponse {Success = true};
         }
     }
 }

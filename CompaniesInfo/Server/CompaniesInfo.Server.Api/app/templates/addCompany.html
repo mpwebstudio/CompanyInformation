@@ -1,52 +1,63 @@
 ﻿<div class="row">
     <div class="" ng-controller="CompanyController">
         <div class="row">
-            <div class="col-sm-12 text-center">Add Company</div>
+
             <div class="row">
-                <div class="form-group">
-                    <div class="col-sm-offset-3 col-sm-6">
-                        <div>
-                            <input type="text" class="form-control" placeholder="Company name" required ng-model="companyName" />
+                <div class="form-horizontal">
+                    <div class="col-sm-12 text-center">
+                        <h1>Add Company</h1>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Company Name</label>
+                        <input type="text" class="form-control" placeholder="Company name" required ng-model="companyName" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Prime Contact Fullname</label>
+                        <div class="input-group col-sm-5">
+                            <input type="text" class="form-control" placeholder="Contact name" required ng-model="selected.fullname" />
+                            <button ng-click="open()" class="btn btn-primary">Look</button>
                         </div>
-                        <div class="">
-                            <input type="text" class="form-control" placeholder="Contact name" required ng-model="selected.fullname" /> <button ng-click="open()" class="btn btn-default">Look</button>
-                        </div>
-                        <div class="hidden">
-                            <input type="text" class="form-control" placeholder="id" id="emplId" ng-model="selected.id" />
-                        </div>
-                        <div class="">
-                            <input type="tel" class="form-control" placeholder="Prefered name" required ng-model="selected.preferedName" />
-                        </div>
-                        <div class="">
-                            <input type="tel" class="form-control" placeholder="Telephone" required ng-model="selected.telephone" />
-                        </div>
-                        <div class="">
-                            <input type="email" class="form-control" placeholder="Email address" ng-model="selected.email" />
-                        </div>
-                        <div class="">
-                            <button class="btn btn-success" ng-disabled="newCompany.$invalid" ng-click="addCompany(selected, companyName)">Add</button>
-                            <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
-                        </div>
-                        <script type="text/ng-template" id="myModalContent.html">
-                            <div class="modal-header">
-                                <h3 class="modal-title">I'm a modal!</h3>
-                            </div>
-                            <div class="modal-body">
-                                <ul>
-                                    <li ng-repeat="item in items">
-                                        <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item.fullname }}</a>
-                                    </li>
-                                </ul>
-                                Selected: <b>{{ selected.item.fullname }}</b>
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-                            </div>
-                        </script>
+                    </div>
+                    <div class="hidden">
+                        <input type="text" class="form-control" placeholder="id" id="emplId" ng-model="selected.id" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Preferred Name</label>
+                        <input type="tel" class="form-control" placeholder="Preferred name" required ng-model="selected.preferedName" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Telephone</label>
+                        <input type="tel" class="form-control" placeholder="Telephone" required ng-model="selected.telephone" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Email</label>
+                        <input type="email" class="form-control" placeholder="Email address" ng-model="selected.email" />
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label"></label>
+                        <button class="btn btn-success" ng-disabled="newCompany.$invalid" ng-click="addCompany(selected, companyName)">Add</button>
+                        <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Select an User</h3>
+    </div>
+    <div class="modal-body companies">
+        <ul>
+            <li ng-repeat="item in items">
+                <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item.fullname }}</a>
+            </li>
+        </ul>
+        
+    </div>
+    <div class="modal-footer">
+        <span class="pull-left">Selected: <b>{{ selected.item.fullname }}</b></span>
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>

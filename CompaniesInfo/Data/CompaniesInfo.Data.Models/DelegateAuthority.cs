@@ -13,7 +13,7 @@
 
         public int OrderSeq { get; set; }
 
-        public virtual CompanyEmployee CompanyEmployee { get; set; }
+        public virtual Employee CompanyEmployee { get; set; }
 
         public virtual Employee Employee { get; set; }
     }

@@ -1,9 +1,13 @@
 ﻿dataApp.controller('EmployeeController',
     function EmployeeController($scope, employeeService, $log, companyService, $window, $uibModal, $q, $routeParams, $location) {
 
+        let isCompanyChange = false;
+        let isAuthorityChange = false;
+        let oldEmploee = {};
+
         $scope.animationsEnabled = true;
 
-        $scope.employee = [];
+        $scope.employee = {};
 
         let empId = +$routeParams.id;
 
@@ -11,10 +15,13 @@
             employeeService.getSingleEmployee(empId,
                 function (response) {
                     $scope.employee = response;
+                    if (oldEmploee === {}) {
+                        oldEmploee = response;
+                    }
                 });
         }
 
-        $scope.viewEmployee = function(empId) {
+        $scope.viewEmployee = function (empId) {
             $window.location = '#/addEmployee/' + empId.id;
         }
 
@@ -34,6 +41,7 @@
             modalInstance.result.then(function (selectedItem) {
                 $scope.employee.delegatedAuthority = selectedItem.fullname;
                 $scope.employee.delegatedAuthorityID = selectedItem.id;
+                isAuthorityChange = true;
 
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
@@ -54,9 +62,14 @@
             });
 
             modalInstance.result.then(function (selectedCompany) {
-                $log.error(selectedCompany);
                 let company = { companyID: selectedCompany.id, companyName: selectedCompany.companyName };
-                $scope.employee.company.push(company);
+                if ($scope.employee.company == null) {
+                    $scope.employee.company = [];
+                    $scope.employee.company.push(company);
+                } else {
+                    $scope.employee.company.push(company);
+                    isCompanyChange = true;
+                }
 
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
@@ -67,17 +80,29 @@
             $scope.animationsEnabled = !$scope.animationsEnabled;
         };
 
-        $scope.removeCompany = function(compName) {
-            $scope.employee.company.splice(compName,1);
+        $scope.removeCompany = function (compName) {
+            $scope.employee.company.splice(compName, 1);
+            isCompanyChange = true;
+        }
+
+        $scope.removeAuthority = function () {
+            $scope.employee.delegatedAuthorityID = null;
+            $scope.employee.delegatedAuthority = null;
+            isAuthorityChange = true;
         }
 
         $scope.addEmployee = function (employee) {
             employeeService.addEmployee(employee,
                 function (response) {
-                    if (response.status === true) {
-                        if (employee.companyId != null) {
-                            let request = { employeeID: response.data.id, companyId: employee.companyId };
-                            employeeService.addEmployeeToCompany(request,
+                    if (response.success === true) {
+                        if (employee.company != null) {
+                            let comp = [...employee.company];
+                            let compIdSum = [];
+                            for (valCompany of comp) {
+                                compIdSum.push(valCompany.companyID);
+                            }
+                            let request = { employeeID: response.data.id, companyId: compIdSum };
+                            employeeService.addEmployeeToCompanies(request,
                                 function (response) {
                                     if (response.success === false) {
                                         alert('Something went wromg with Employee to Company');
@@ -86,10 +111,10 @@
                                 });
                         }
 
-                        if (employee.delegatedEmployeeId != null) {
+                        if (employee.delegatedAuthorityID != null) {
                             let request = {
                                 employeeId: response.data.id,
-                                authorityEmployeeID: employee.delegatedEmployeeId
+                                authorityEmployeeID: employee.delegatedAuthorityID
                             };
                             employeeService.addDelegatedAuthority(request,
                                 function (response) {
@@ -112,7 +137,118 @@
         if ($location.path() == '/allEmployees/') {
             employeeService.getAllEmployees(1, function (response) {
                 $scope.allEmployees = response.data;
-                $log.error(response.data);
             });
+        }
+
+        $scope.updateEmployee = function (employee) {
+            if (oldEmploee === employee) {
+                $log.error(oldEmploee);
+                $log.error(employee);
+
+
+                alert('Same');
+            } else {
+                employeeService.updateEmployee(employee,
+                    function (response) {
+                        if (response.success === true && isAuthorityChange === true) {
+                            if (employee.delegatedAuthorityID === null) {
+                                employeeService.deleteDelegatedAuthority(employee.id,
+                                    function (response) {
+                                        if (response.success === false) {
+                                            alert('Something went wrong for Autority User');
+                                        }
+                                    });
+                            }
+                            if (oldEmploee.delegatedAuthorityID === null && employee.delegatedAuthorityID !== null) {
+                                let request = {
+                                    authorityEmployeeID: employee.delegatedAuthorityID,
+                                    employeeID: employee.id
+                                };
+                                employeeService.addDelegatedAuthority(request,
+                                    function (response) {
+                                        if (response.success === false) {
+                                            alert('Something went wrong for Autority User');
+                                        }
+                                    });
+                            } else {
+                                let request = {
+                                    authorityEmployeeID: employee.delegatedAuthorityID,
+                                    employeeID: employee.id
+                                };
+                                employeeService.updateDelegatedAuthority(request,
+                                    function (response) {
+                                        if (response.success === false) {
+                                            alert('Something went wrong for Autority User');
+                                        }
+                                    });
+                            }
+                        }
+
+                        if (response.success === true && isCompanyChange === true) {
+                            if (employee.company.lenght == 0) {
+                                let request = { employeeID: employee.id };
+                                employeeService.deleteAllEmployeeToCompany(request,
+                                    function (response) {
+                                        if (response.success === true) {
+                                            $log.error('company to employee deleted');
+                                        }
+                                    });
+                            } else {
+                                let comp = [...employee.company];
+                                let compIdSum = [];
+                                for (valCompany of comp) {
+                                    compIdSum.push(valCompany.companyID);
+                                }
+                                let request = { employeeID: response.data.id, companyId: compIdSum };
+                                employeeService.updateEmployeeToCompanies(request,
+                                    function (response) {
+                                        if (response.success === false) {
+                                            alert('Something went wromg with Employee to Company');
+                                            return;
+                                        }
+                                    });
+                            }
+                        }
+
+                        if (response.success === false) {
+                            alert('Something went wrong in employee');
+                        }
+                    });
+            }
+        }
+
+        $scope.deleteEmployee = function (employee) {
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: 'deleteUser.html',
+                controller: 'ModalController',
+                scope: $scope,
+                resolve: {
+                    items: function () {
+                        return $scope.add;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (selected) {
+                if (selected === true) {
+                    let request = { employeeID: employee.id };
+                    employeeService.deleteEmployee(request,
+                        function (response) {
+                            if (response.success === true) {
+                                $window.location = '#/';
+                            } else {
+                                alert(response.message);
+                            }
+                        });
+                }
+
+            }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
+        }
+
+        $scope.cancel = function() {
+            $window.location = '/allEmployees';
         }
     })
